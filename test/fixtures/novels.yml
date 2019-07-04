@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  novel_title: 1
+  novel_about: MyText
+  deleted_at: 2019-07-04 08:12:00
+  genre_id: 1
+  impressions_count: 1
+
+two:
+  user_id: 1
+  novel_title: 1
+  novel_about: MyText
+  deleted_at: 2019-07-04 08:12:00
+  genre_id: 1
+  impressions_count: 1

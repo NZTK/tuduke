@@ -1,0 +1,19 @@
+current directory: /vagrant/tuduke/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+/usr/bin/ruby2.5 -r ./siteconf20190704-4450-eho4ca.rb extconf.rb
+creating Makefile
+
+current directory: /vagrant/tuduke/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 0.072 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/tuduke/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+make: Warning: File 'Makefile' has modification time 0.042 s in the future
+compiling cruby.c
+linking shared-object skiptrace/cruby.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/tuduke/vendor/bundle/ruby/2.5.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20190704-4450-138rmsh/skiptrace

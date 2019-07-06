@@ -1,6 +1,7 @@
 class NovelsController < ApplicationController
 
 	def index
+		@novels = Novel.all
 	end
 
 	def show
@@ -9,10 +10,21 @@ class NovelsController < ApplicationController
 	def edit
 	end
 
+	def new
+		@novel = Novel.new
+	end
+
 	def destroy
 	end
 
 	def ranking
 	end
 
+	def create
+	end
+
+	private
+	def
+	end
+end
 end

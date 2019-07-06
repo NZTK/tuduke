@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #000000;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: blue;
+}
+
+li {
+	list-style: none;
+}
+
+.navbar-right > li {
+	padding: 5px;
+	margin-top: 20px;
+}
+
+

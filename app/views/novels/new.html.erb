@@ -1,0 +1,22 @@
+<div class= "body">
+	<div class= "container">
+		<div class= "flash">
+			<%= flash[:notice] %>
+		</div>
+		<hi>新規作成</hi>
+		<%= form_for(@novel) do |f| %>
+		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+			<div class= "field" >
+				<%= f.label :novel_title, "小説名" %>
+				<%= f.text_field :novel_title, placeholder: "小説名を入力　3~50文字" %>
+			</div>
+			<div class= "field" >
+				<%= f.label :novel_genre, "ジャンル" %>
+				<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
+			</div>
+
+		<% end %>
+</div>
+</div>
+</div>
+<%= render "common/footer" %>

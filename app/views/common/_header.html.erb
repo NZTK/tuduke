@@ -1,0 +1,38 @@
+<header class= "navbar navbar-fixed-top navbar-inverse" style= "background-color: white">
+  <div class= "container">
+    <nav class= "nav navbar-nav ">
+      <%= link_to root_path do%>
+      <%= image_tag "logo.jpg", size: "200x100"%>
+      <% end %>
+      <%= search_form_for @q, novels_path do |f| %>
+        <%= f.text_field :novel_title_cont, placeholder: "タイトルを検索" %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </nav>
+
+    <% if user_signed_in? %>
+    <div class= "collapse navbar-collapse">
+      <ul class= "navbar-nav navbar-right">
+        <li ><%= link_to "#{current_user.username}",user_path(current_user) %></li>
+        <li><%= link_to ranking_novels_path, class: "fas fa-crown" do %>
+          ランキング
+          <% end %>
+        </li>
+        <li><%= link_to history_user_path(current_user.id), class: "fas fa-history" do %>
+          閲覧履歴
+          <% end %>
+        </li>
+        <li><%= link_to new_novel_path, class: "fas fa-plus" do %>
+          新規投稿
+          <% end %>
+        </li>
+        <li><%= link_to user_path(current_user.id), class: "fas fa-user" do %>
+          マイページ
+          <% end %>
+        </li>
+        <li><%= link_to destroy_user_session_path, class: "fas fa-sign-out-alt", method: :delete do %>
+          ログアウト
+          <% end %>
+        </li>
+      </ul>
+    <% end %>

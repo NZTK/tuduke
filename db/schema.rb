@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_071011) do
+ActiveRecord::Schema.define(version: 2019_07_06_114830) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -78,14 +78,13 @@ ActiveRecord::Schema.define(version: 2019_07_06_071011) do
 
   create_table "novels", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "novel_title"
     t.text "novel_about"
     t.datetime "deleted_at"
-    t.integer "genre_id"
+    t.integer "genre_id", null: false
     t.integer "impressions_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["novel_title"], name: "index_novels_on_novel_title"
+    t.string "novel_title"
   end
 
   create_table "relationships", force: :cascade do |t|

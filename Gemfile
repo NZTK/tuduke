@@ -76,6 +76,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "jquery-rails"
 gem 'acts-as-taggable-on'
+gem 'rails-i18n'
+
 
 
 

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      novel: 小説
+      genre: ジャンル
+    attributes:
+      novel:
+        novel_title: 小説名
+        novel_about: 説明
+      genre:
+        genre_name:  ジャンル
+

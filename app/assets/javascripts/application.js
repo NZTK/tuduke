@@ -16,3 +16,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function(){
+	$("#novel_novel_title").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-1").text(countNum + "文字");
+	});
+});
+
+$(function(){
+	$("#novel_novel_about").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-2").text(countNum + "文字");
+	});
+});

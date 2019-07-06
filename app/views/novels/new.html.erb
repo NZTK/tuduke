@@ -3,18 +3,38 @@
 		<div class= "flash">
 			<%= flash[:notice] %>
 		</div>
-		<hi>新規作成</hi>
-		<%= form_for(@novel) do |f| %>
 		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
-			<div class= "field" >
+		<% if @novel.errors.any? %>
+		<div id="error_explanation">
+			<ul>
+				<h3><%= @novel.errors.count %>件のエラーです</h3>
+				<%= @novel.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+		<h1>新規作成</h1>
+		<%= form_for(@novel) do |f| %>
+			<div class= "field novel-field" >
 				<%= f.label :novel_title, "小説名" %>
-				<%= f.text_field :novel_title, placeholder: "小説名を入力　3~50文字" %>
+				<%= f.text_field :novel_title, placeholder: "小説名を入力　~50文字" %>
+				<p id="counter-1">0文字</p>
 			</div>
-			<div class= "field" >
-				<%= f.label :novel_genre, "ジャンル" %>
+			<div class= "field">
+				<%= f.label :novel_genre, "ジャンル" %><br>
 				<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
 			</div>
-
+			<div class= "field novel-field">
+				<%= f.label :novel_tag, "タグ" %>
+				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), placeholder: "タグ1,タグ2,タグ3, ..."%>
+			</div>
+			<div class= "field">
+				<%= f.label :novel_about, "説明" %>
+				<%= f.text_area :novel_about, placeholder: "あらすじ/小説説明  10~500文字" %>
+				<p id="counter-2">0文字</p>
+			</div>
+			<%= f.submit "投稿" %>
 		<% end %>
 </div>
 </div>

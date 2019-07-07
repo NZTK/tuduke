@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'genres/new'
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   root 'novels#index'
   get 'about/index'
+  resources :genres, only: [:new, :create, :destroy]
 
 end

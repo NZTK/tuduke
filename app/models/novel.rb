@@ -5,7 +5,7 @@ class Novel < ApplicationRecord
 	acts_as_taggable
 
 	belongs_to :user, optional: true
-	belongs_to :genre
+	belongs_to :genre, optional: true
 
 	has_many :novel_content
 

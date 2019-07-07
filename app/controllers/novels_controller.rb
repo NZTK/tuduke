@@ -1,9 +1,12 @@
 class NovelsController < ApplicationController
-
 	def index
-		if params[:tag]
-			@novels = Novel.tagged_with(params[:tag])
-		else
+
+
+		if params[:tag_name]
+			@novels = Novel.tagged_with(params[:tag_name])
+		elsif params[:genre_id]
+			@novels =  Novel.where(genre_id: params[:genre_id])
+		elsif
 			@novels = Novel.all
 		end
 	end
@@ -26,6 +29,7 @@ class NovelsController < ApplicationController
 
 	def create
 		@novel = Novel.new(novel_params)
+		@novel.user_id = current_user.id
 		if @novel.save
 			flash[:notice] = "一話目を投稿しよう"
 			redirect_to new_novel_novel_content_path(@novel.id)

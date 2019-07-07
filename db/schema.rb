@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_114830) do
+ActiveRecord::Schema.define(version: 2019_07_07_074011) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_06_114830) do
     t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_name"], name: "index_genres_on_genre_name", unique: true
   end
 
   create_table "histories", force: :cascade do |t|

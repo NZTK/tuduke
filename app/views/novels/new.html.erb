@@ -35,7 +35,7 @@
 			<% end %>
 			<div class= "field novel-field">
 				<%= f.label :novel_tag, "タグ" %>
-				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), placeholder: "タグ1,タグ2,タグ3, ..."%>
+				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), "date-role" => "tagsinput",  placeholder: "タグ1,タグ2,タグ3, ..."%>
 			</div>
 			<div class= "field">
 				<%= f.label :novel_about, "説明" %>

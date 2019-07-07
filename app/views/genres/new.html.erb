@@ -1,2 +1,43 @@
-<h1>Genres#index</h1>
-<p>Find me in app/views/genres/index.html.erb</p>
+<div class= "body">
+	<div  class="container">
+		<div class= "flash">
+			<%= flash[:notice] %>
+		</div>
+		<% if @genre.errors.any? %>
+			<div id="error_explanation">
+				<ul>
+					<h3><%= @genre.errors.count %>件のエラーです</h3>
+					<%= @genre.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class= "row">
+			<div class= "col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+				<h3>ジャンル追加</h3>
+				<%= form_for(@genre) do |f| %>
+					<%= f.text_field :genre_name,  autofocus: true, class:  "form-control", placeholder: "ジャンルを追加" %>
+					<%= f.submit "追加" %>
+				<% end %>
+				<h3>ジャンル一覧</h3>
+				<table class ="table table-hover  table-responsive">
+					<thead>
+						<th>No.</th>
+						<th>ジャンル</th>
+						<th></th>
+					</thead>
+					<tbody>
+						<% @genres.each  do  |f| %>
+						<tr>
+							<td><%= f.id %></td>
+							<td><%= f.genre_name %></td>
+							<td><%= link_to "削除" , new_genre_path , method: :delete, date:{confilm: "本当に削除しますか？" }%></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

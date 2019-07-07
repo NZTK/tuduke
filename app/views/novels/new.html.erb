@@ -21,10 +21,18 @@
 				<%= f.text_field :novel_title, placeholder: "小説名を入力　~50文字" %>
 				<p id="counter-1">0文字</p>
 			</div>
-			<div class= "field">
-				<%= f.label :novel_genre, "ジャンル" %><br>
-				<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
-			</div>
+			<% if current_user.admin? %>
+				<div class= "field">
+					<%= f.label :novel_genre, "ジャンル" %><br>
+					<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
+					<%=link_to "ジャンルを追加" , new_genre_path  %>
+				</div>
+			<% else %>
+				<div class= "field">
+					<%= f.label :novel_genre, "ジャンル" %><br>
+					<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
+				</div>
+			<% end %>
 			<div class= "field novel-field">
 				<%= f.label :novel_tag, "タグ" %>
 				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), placeholder: "タグ1,タグ2,タグ3, ..."%>

@@ -14,6 +14,7 @@
 //= require activestorage
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-tagsinput.min
 //= require turbolinks
 //= require_tree .
 

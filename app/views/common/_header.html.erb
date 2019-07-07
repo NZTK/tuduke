@@ -1,13 +1,15 @@
-<header class= "navbar navbar-fixed-top navbar-inverse" style= "background-color: white">
+<header class= "navbar  navbar-inverse" style= "background-color: white">
   <div class= "container">
     <nav class= "nav navbar-nav ">
       <%= link_to root_path do%>
       <%= image_tag "logo.jpg", size: "200x100"%>
       <% end %>
-      <%= search_form_for @q, novels_path do |f| %>
+      <div class="navbar-form navbar-right">
+      <%= search_form_for @search, url: novels_path do |f| %>
         <%= f.text_field :novel_title_cont, placeholder: "タイトルを検索" %>
-        <%= f.submit "検索" %>
+        <%= f.submit "検索" , class: "btn btn-default btn-xs" %>
       <% end %>
+    </div>
     </nav>
 
     <% if user_signed_in? %>
@@ -36,3 +38,6 @@
         </li>
       </ul>
     <% end %>
+</div>
+</div>
+</header>

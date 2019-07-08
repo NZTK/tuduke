@@ -1,7 +1,5 @@
 class NovelsController < ApplicationController
 	def index
-
-
 		if params[:tag_name]
 			@novels = Novel.tagged_with(params[:tag_name])
 		elsif params[:genre_id]
@@ -9,9 +7,11 @@ class NovelsController < ApplicationController
 		elsif
 			@novels = Novel.all
 		end
+
 	end
 
 	def show
+		@novel =  Novel.find(params[:id])
 	end
 
 	def edit

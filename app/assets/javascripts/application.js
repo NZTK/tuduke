@@ -15,7 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-tagsinput.min
-//= require turbolinks
+
 //= require_tree .
 
 $(function(){
@@ -30,4 +30,15 @@ $(function(){
 		let countNum = String($(this).val().length);
 		$("#counter-2").text(countNum + "文字");
 	});
+});
+
+$(function(){
+  $(".dropdwn_btn-1").on("click", function(){
+    $(".1st").slideToggle();
+  });
+});
+$(function(){
+  $(".dropdwn_btn-2").on("click", function(){
+    $(".2nd").slideToggle();
+  });
 });

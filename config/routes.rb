@@ -24,6 +24,6 @@ Rails.application.routes.draw do
   root 'novels#index'
   get 'about/index'
   resources :genres, only: [:new, :create, :destroy]
-  get 'tags/:tag', to: 'novelss#index', as: :tag
+  get 'tags/:tag', to: 'novels#index', as: :tag
 
 end

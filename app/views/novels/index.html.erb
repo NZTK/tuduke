@@ -1,10 +1,10 @@
-<%= render "common/header", genres:  @genres  %>
+<%= render "common/header" %>
 <div class= "body">
 	<div class= "container">
 		<div class= "row">
 			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-2" >
-				<%if @search_novels %>
-					<% @search_novels.each do |f| %>
+				<%if @novels %>
+					<% @novels.each do |f| %>
 						<div class= "novel-box">
 							<h3><%= link_to f.novel_title, novel_path(f.id) %></h3>
 							<button class= "genre"><%= link_to f.genre.genre_name ,novels_path(genre_id: f.genre.id) %></button><br>
@@ -22,7 +22,7 @@
 						</div>
 					<% end %>
 				<% else %>
-					<% @novels.each do |f| %>
+					<% @search_novels.each do |f| %>
 						<div class= "novel-box">
 							<h3><%= link_to f.novel_title, novel_path(f.id) %></h3>
 							<button class= "genre"><%= link_to f.genre.genre_name ,novels_path(genre_id: f.genre.id) %></button><br>

@@ -1,10 +1,13 @@
 class NovelsController < ApplicationController
 	def index
 		if params[:tag_name]
+			puts 'tag_name'
 			@novels = Novel.tagged_with(params[:tag_name])
 		elsif params[:genre_id]
+			puts 'gnere_id'
 			@novels =  Novel.where(genre_id: params[:genre_id])
-		elsif
+		else
+			puts 'other'
 			@novels = Novel.all
 		end
 

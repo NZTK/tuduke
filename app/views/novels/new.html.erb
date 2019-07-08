@@ -1,3 +1,4 @@
+<%= render "common/header" %>
 <div class= "body">
 	<div class= "container">
 		<div class= "flash">
@@ -25,7 +26,7 @@
 				<div class= "field">
 					<%= f.label :novel_genre, "ジャンル" %><br>
 					<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
-					<%=link_to "ジャンルを追加" , new_genre_path  %>
+					<%=link_to "ジャンルを追加" , new_genre_path ,class: "btn btn-success btn-xs"%>
 				</div>
 			<% else %>
 				<div class= "field">
@@ -39,10 +40,10 @@
 			</div>
 			<div class= "field">
 				<%= f.label :novel_about, "説明" %>
-				<%= f.text_area :novel_about, placeholder: "あらすじ/小説説明  10~500文字" %>
+				<%= f.text_area :novel_about, placeholder: "あらすじ  10~5000文字" %>
 				<p id="counter-2">0文字</p>
 			</div>
-			<%= f.submit "投稿" %>
+			<h4><%= f.submit "一話目を書く" ,class: "btn btn-primary btn-block" ,date:{ confirm: "投稿しますか？"}%></h4>
 		<% end %>
 </div>
 </div>

@@ -33,6 +33,7 @@ a{
 a:hover {
 	text-decoration: none;
 }
+
 .navbar-inverse .navbar-nav > li > a {
 	color: #000000;
 
@@ -69,7 +70,7 @@ li {
 
 textarea {
 	width: 100%;
-	height: 100px;
+	height: 1000px;
 	border-color: black
 }
 
@@ -89,6 +90,8 @@ input {
 	border-radius: 20px;
 	padding: 8px 13px 13px 13px;
 	margin-bottom: 10px;
+	width: 100%;
+	margin: 10px auto;
 }
 
 .tag {
@@ -100,6 +103,9 @@ input {
 }
 .tag > a {
 	color: white;
+}
+.tag > a:hover{
+	color: black;
 }
 
 .novel-about > p{
@@ -129,6 +135,7 @@ input {
 	display: none;
 	position: absolute;
 	background-color: black;
+	z-index: 1000;
 }
 #dropdwn  li {
 	margin: 1px;
@@ -158,8 +165,20 @@ input {
 	text-align: center;
 	margin: auto;
 }
-
-
+.novel-field {
+	margin: 10px 0;
+}
+.btn_open {
+	background-color: #007bff;
+	color: white;
+	margin-bottom: 10px;
+}
+.btn_open:hover {
+	background-color: white;
+	border:solid 1px;
+	border-color: #007bff;
+	color: #007bff;
+}
 
 
 

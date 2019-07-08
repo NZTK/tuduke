@@ -13,8 +13,10 @@
 									<%= link_to tag, novels_path(tag_name: tag) %>
 								</button>
 							<% end %>
-							<div class= "novel-about">
-							<%= simple_format(f.novel_about) %>
+							<div class ="open">
+								<div class= "novel-about">
+								<%= simple_format(f.novel_about) %>
+								</div>
 							</div>
 							作成者：<%= link_to f.user.username, user_path(f.user.id) %>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>

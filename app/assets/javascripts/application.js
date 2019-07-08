@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require bootstrap-tagsinput.min
 
+//= require readmore
 //= require_tree .
 
 $(function(){
@@ -42,3 +43,24 @@ $(function(){
     $(".2nd").slideToggle();
   });
 });
+
+// $(function(){
+// 	$(".open").readmore({
+// 	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+// 	lessLink: '<a  class="btn  btn_close" href="#"><span>閉じる</span></a>'
+// 	});
+// });
+
+$(document).ready(function($){
+	$(".open").readmore({
+	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+	lessLink: '<a  class="btn  btn_open" href="#"><span>閉じる</span></a>'
+	});
+});
+
+// jQuery(document).ready(function($){
+// 	$(".open").readmore({
+// 	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+// 	lessLink: '<a  class="btn  btn_close" href="#"><span>閉じる</span></a>'
+// 	});
+// });

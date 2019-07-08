@@ -1,1 +1,17 @@
-a
+<%= render "common/header" %>
+<div class= "body">
+  <div class ="novel_show_container">
+    <h2><%= @novel.novel_title %></h2>
+    <h3><%= link_to @novel.user.username , user_path(@novel.user.id) %></h3>
+    <button class= "genre">
+      <%= link_to @novel.genre.genre_name ,novels_path(genre_id: @novel.genre.id) %>
+    </button><br>
+    <% @novel.tag_list.each do |tag|  %>
+      <button class="tag">
+        <%= link_to tag, novels_path(tag_name: tag) %>
+      </button>
+    <% end %>
+    <div class ="novel-about">
+      <%= simple_format(@novel.novel_about) %>
+    </div>
+      <%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>

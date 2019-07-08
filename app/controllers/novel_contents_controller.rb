@@ -1,9 +1,10 @@
 class NovelContentsController < ApplicationController
-
-	def show
+	def new
+		@novel_content = NovelContent.new
+		@novel  =  Novel.find_by(params[:id])
 	end
 
-	def new
+	def show
 	end
 
 	def create

@@ -34,7 +34,6 @@ class NovelsController < ApplicationController
 		@novel = Novel.new(novel_params)
 		@novel.user_id = current_user.id
 		if @novel.save
-			flash[:notice] = "一話目を投稿しよう"
 			redirect_to new_novel_novel_content_path(@novel.id)
 		else
 			render action: 'new'

@@ -1,3 +1,4 @@
+<%= render "common/header" %>
 <div class= "body">
 	<div  class="container">
 		<div class= "flash">
@@ -18,7 +19,7 @@
 				<h3>ジャンル追加</h3>
 				<%= form_for(@genre) do |f| %>
 					<%= f.text_field :genre_name,  autofocus: true, class:  "form-control", placeholder: "ジャンルを追加" %>
-					<%= f.submit "追加" %>
+					<%= f.submit "追加", class: "btn btn-success" %>
 				<% end %>
 				<h3>ジャンル一覧</h3>
 				<table class ="table table-hover  table-responsive">
@@ -32,7 +33,7 @@
 						<tr>
 							<td><%= f.id %></td>
 							<td><%= f.genre_name %></td>
-							<td><%= link_to "削除" , new_genre_path , method: :delete, date:{confilm: "本当に削除しますか？" }%></td>
+							<td><%= link_to "削除" , genre_path(f.id) , class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
 						</tr>
 						<% end %>
 					</tbody>

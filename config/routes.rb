@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   	collection do
   		get 'ranking'
   	end
-  	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy] do
+  	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy, :create] do
   		resource :comments, only: [:create, :destroy]
   		resource :likes, only: [:create, :destroy]
   		resource :history, only: [:create, :destroy]

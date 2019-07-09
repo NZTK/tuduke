@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require bootstrap-tagsinput.min
 
+//= require readmore
 //= require_tree .
 
 $(function(){
@@ -33,6 +34,20 @@ $(function(){
 });
 
 $(function(){
+	$("#novel_content_novel_content_title").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-3").text(countNum + "文字");
+	});
+});
+
+$(function(){
+	$("#novel_content_novel_content_text").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-4").text(countNum + "文字");
+	});
+});
+
+$(function(){
   $(".dropdwn_btn-1").on("click", function(){
     $(".1st").slideToggle();
   });
@@ -42,3 +57,24 @@ $(function(){
     $(".2nd").slideToggle();
   });
 });
+
+// $(function(){
+// 	$(".open").readmore({
+// 	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+// 	lessLink: '<a  class="btn  btn_close" href="#"><span>閉じる</span></a>'
+// 	});
+// });
+
+$(document).ready(function($){
+	$(".open").readmore({
+	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+	lessLink: '<a  class="btn  btn_open" href="#"><span>閉じる</span></a>'
+	});
+});
+
+// jQuery(document).ready(function($){
+// 	$(".open").readmore({
+// 	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
+// 	lessLink: '<a  class="btn  btn_close" href="#"><span>閉じる</span></a>'
+// 	});
+// });

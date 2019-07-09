@@ -19,7 +19,7 @@ class User < ApplicationRecord
 			         					 foreign_key: "follower_id",
 			         					 dependent: :destroy
 
-         validates :user_name, presence: true, uniqueness: true, length: {maximum: 15, minimum: 3}
+         validates :username, presence: true, uniqueness: true, length: {maximum: 15, minimum: 3}
 
 
 

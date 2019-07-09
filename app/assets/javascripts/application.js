@@ -34,6 +34,20 @@ $(function(){
 });
 
 $(function(){
+	$("#novel_content_novel_content_title").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-3").text(countNum + "文字");
+	});
+});
+
+$(function(){
+	$("#novel_content_novel_content_text").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-4").text(countNum + "文字");
+	});
+});
+
+$(function(){
   $(".dropdwn_btn-1").on("click", function(){
     $(".1st").slideToggle();
   });

@@ -1,9 +1,6 @@
 <%= render "common/header"%>
 <div class= "body">
 	<div class= "container">
-		<div class= "flash">
-			<%= flash[:notice] %>
-		</div>
 		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
 		<% if @novel_content.errors.any? %>
 		<div id="error_explanation">
@@ -19,18 +16,27 @@
 		<h2><%= @novel.novel_title %></h2>
 		ホストユーザー:<%= link_to @novel.user.username, user_path(@novel.user) %>
 		<h1>TUDUKI!!</h1>
-		<%= form_for(@novel_content, :url => new_novel_novel_content_path) do |f| %>
+		<%= form_for(@novel_content, :url => novel_novel_contents_path) do |f| %>
+		<h3 style="color: red">*印は必須</h3>
 			<div class= "field novel-field" >
-				<%= f.label :novel_content_title, "タイトル" %>
+				<%= f.label :novel_content_title, "タイトル" %><i style="color: red">*</i>
 				<%= f.text_field :novel_content_title, placeholder: "タイトルを入力　~50文字" %>
-				<p id="counter-1">0文字</p>
+				<p id="counter-3">0文字</p>
+			</div>
+			<div class ="field content-field">
+				<%= f.label :novel_content_forewords, "前書き" %>
+				<%= f.text_area :novel_content_forewords, placeholder: "前書き" %>
 			</div>
 			<div>
-				<%= f.label :novel_content_text, "説明" %>
+				<%= f.label :novel_content_text, "説明" %><i style="color: red">*</i>
 				<%= f.text_area :novel_content_text, placeholder: "本文  300~30000文字" %>
-				<p id="counter-2">0文字</p>
+				<p id="counter-4">0文字</p>
 			</div>
-			<h4><%= f.submit "TUDUKU!!" ,class: "btn btn-primary btn-block" ,dalete:{ confirm: "投稿しますか？"}%></h4>
+			<div class ="field content-field">
+				<%= f.label :novel_content_afterwords, "後書き" %>
+				<%= f.text_area :novel_content_afterwords, placeholder: "後書き" %>
+			</div>
+			<h4><%= f.submit "TUDUKU!!" ,class: "btn btn-primary btn-block" ,method: :post, date:{ confirm: "投稿しますか？"}%></h4>
 		<% end %>
 </div>
 </div>

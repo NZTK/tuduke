@@ -51,6 +51,12 @@
                   マイページ
                 <% end %>
             </li>
+            <% if current_user.admin? %>
+              <li><%= link_to users_path , class: "fas fa-users" do %>
+              会員一覧
+              <% end %>
+              </li>
+            <% end %>
           </ul>
         </li>
         <li><%= link_to destroy_user_session_path, class: "fas fa-sign-out-alt", method: :delete do %>

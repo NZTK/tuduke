@@ -16,6 +16,8 @@
 
   @import "bootstrap-sprockets";
   @import "bootstrap";
+  @import "font-awesome-sprockets";
+  @import "font-awesome";
 
 * {
     margin: 0;
@@ -200,13 +202,73 @@ input {
 	word-break: break-all;
 }
 
+.devise_container{
+
+	margin: 100px auto;
+	text-align: center;
+	border: solid 1px;
+	margin-bottom: 20px;
+}
+.devise_container .field > input[type= "text"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.devise_container .field > input[type= "email"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.devise_container .field > input[type= "password"] {
+	width: 70%;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	padding: 15px 25px;
+}
+
+.devise_container .actions > input[type= "submit"] {
+	width: 50%;
+	height: 40px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	background-color: royalblue;
+	color: white;
+}
+.password_container {
+	width: 70%;
+	margin: 100px auto;
+	text-align: center;
+	border: solid 1px;
+	margin-bottom: 20px;
+}
+.password_container .field > input[type= "email"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.password_container .actions > input[type= "submit"] {
+	width: 70%;
+	height: 40px;
+	border-radius: 5px;
+	margin: 15px 0;
+	background-color: royalblue;
+	color: white;
+}
+
+.devise_field {
+	margin: 20px auto;
+}
 
 
-
-
-
-
-
+.action_btn .button_to  > input[type= "submit"] {
+	width: 50%;
+    margin: auto;
+    background-color: limegreen;
+    padding: 8px 0;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    color: white;
+}
 
 
 

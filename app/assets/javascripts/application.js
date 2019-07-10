@@ -67,6 +67,7 @@ $(function(){
 
 $(document).ready(function($){
 	$(".open").readmore({
+	collapsedHeight: 100,
 	moreLink: '<a  class="btn  btn_open" href="#"><span>続きを読む</span></a>',
 	lessLink: '<a  class="btn  btn_open" href="#"><span>閉じる</span></a>'
 	});

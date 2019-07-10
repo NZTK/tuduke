@@ -5,10 +5,11 @@ class NovelsController < ApplicationController
 			@novels = Novel.tagged_with(params[:tag_name])
 		elsif params[:genre_id]
 			puts 'gnere_id'
-			@novels = Novel.where(genre_id: params[:genre_id])
+			@novels = Novel.where(genre_id: params[:genre_id]).page
 		else
 			puts 'other'
-			@novels = Novel.all
+			@search = Novel.ransack(params[:q])
+			@search_novels = @search.result
 		end
 
 	end
@@ -36,6 +37,7 @@ class NovelsController < ApplicationController
 		@novel = Novel.new(novel_params)
 		@novel.user_id = current_user.id
 		if @novel.save
+			flash[:notice] = "一話目を投稿しよう！"
 			redirect_to new_novel_novel_content_path(@novel.id)
 		else
 			render action: 'new'

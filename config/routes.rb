@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   		get 'like'
   		get 'history'
   		get 'follow'
+      get 'novels'
+      get 'novel_contents'
   	end
   end
   resources :novels do

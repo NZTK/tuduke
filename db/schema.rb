@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_120954) do
+ActiveRecord::Schema.define(version: 2019_07_10_083754) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "novel_contents_id"
     t.text "comment_contents"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "novel_content_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2019_07_09_120954) do
 
   create_table "histories", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "novel_contents_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "novel_content_id"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 2019_07_09_120954) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "novel_contents_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "novel_content_id"
   end
 
   create_table "novel_contents", force: :cascade do |t|

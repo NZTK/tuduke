@@ -1,8 +1,11 @@
  <%= render "common/header" %>
  <div class= "body">
  	<div class= "show_head" >
- 				<h3><%= @user.username %>さんのマイページ</h3>
- 			</div>
+ 		<h3><%= @user.username %>さんのマイページ</h3>
+ 		<% if current_user == @user or current_user.admin? %>
+ 		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-info" %>
+ 		<% end %>
+ 	</div>
  	<div class= "container">
  		<div class= "row">
  			<div class= "show_novels_box">
@@ -63,7 +66,7 @@
 				<% end  %>
 			</div>
 			<div class= "user_about">
-				<table>
+				<table style="width: 100%;">
 					<tr>
 						<th>ID</th>
 						<td><%= @user.id %></td>

@@ -10,7 +10,7 @@
  		</div>
  		<%  else %>
 		<div class= "row">
-			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-2" >
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-1" >
 				<% @novel_contents.each do |f| %>
 					<div class= "novel-box">
 						<h3><%= link_to simple_format(f.novel_content_title), novel_contents_user_path(f.id) %></h3>

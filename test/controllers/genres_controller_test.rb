@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class GenresControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get genres_index_url
+  test "should get new" do
+    get new_genre_url
     assert_response :success
   end
 

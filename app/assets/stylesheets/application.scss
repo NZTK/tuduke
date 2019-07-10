@@ -78,7 +78,7 @@ li {
 
 .content-field > textarea {
 	width: 100%;
-	height: 100px;
+	height: 130px;
 	border-color: black;
 	border-width: 1px;
 }
@@ -207,6 +207,7 @@ input {
 }
 #title > a {
 	word-break: break-all;
+	display: block;
 }
 
 .devise_container{
@@ -359,3 +360,31 @@ input {
 	padding: 10px;
 	width: 80%;
 }
+
+.novel_content_head {
+	text-align: right;
+    margin-right: 40px;
+}
+.novel-content-title {
+	text-align: center;
+}
+.novel-content-foreword {
+	text-align: left;
+    margin: auto 100px;
+    border-bottom: solid 1px;
+    word-break: break-word;
+}
+
+.novel-content-text {
+	margin: 20px 100px 20px 100px;
+	word-break: break-word;
+}
+
+.novel-content-afterword {
+	text-align: left;
+    margin: auto 100px;
+    border-top: solid 1px;
+    word-break: break-word;
+}
+
+

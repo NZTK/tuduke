@@ -41,9 +41,23 @@ $(function(){
 });
 
 $(function(){
-	$("#novel_content_novel_content_text").on("keyup", function(){
+	$("#novel_content_novel_content_forewords").on("keyup", function(){
 		let countNum = String($(this).val().length);
 		$("#counter-4").text(countNum + "文字");
+	});
+});
+
+$(function(){
+	$("#novel_content_novel_content_text").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-5").text(countNum + "文字");
+	});
+});
+
+$(function(){
+	$("#novel_content_novel_content_afterwords").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-6").text(countNum + "文字");
 	});
 });
 

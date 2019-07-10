@@ -5,6 +5,8 @@ class NovelContentsController < ApplicationController
 	end
 
 	def show
+		@novel_content = NovelContent.find(params[:id])
+		@novel = Novel.find_by(id: @novel_content.novel.id)
 	end
 
 	def create

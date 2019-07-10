@@ -15,8 +15,8 @@
 		<h1>新規作成</h1>
 		<%= form_for(@novel) do |f| %>
 			<div class= "field novel-field" >
-				<%= f.label :novel_title, "小説名" %>
-				<%= f.text_field :novel_title, placeholder: "小説名を入力　~50文字" %>
+				<%= f.label :novel_title, "作品名 =50文字" %>
+				<%= f.text_field :novel_title, placeholder: "作品名を入力　~50文字" %>
 				<p id="counter-1">0文字</p>
 			</div>
 			<% if current_user.admin? %>
@@ -36,8 +36,8 @@
 				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), "date-role" => "tagsinput",  placeholder: "タグ1,タグ2,タグ3, ..."%>
 			</div>
 			<div class= "field">
-				<%= f.label :novel_about, "説明" %>
-				<%= f.text_area :novel_about, placeholder: "あらすじ  10~5000文字" %>
+				<%= f.label :novel_about, "あらすじ/説明  10~10000文字" %>
+				<%= f.text_area :novel_about, placeholder: "あらすじ/説明  10~10000文字" %>
 				<p id="counter-2">0文字</p>
 			</div>
 			<h4><%= f.submit "一話目を書く" ,class: "btn btn-primary btn-block" ,date:{ confirm: "投稿しますか？"}%></h4>

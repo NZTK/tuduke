@@ -10,5 +10,5 @@ class Novel < ApplicationRecord
 	has_many :novel_content, dependent: :destroy
 
 	validates :novel_title, presence: true, length: {maximum: 50}
-	validates :novel_about, presence: true, length: {maximum: 5000, minimum: 10}
+	validates :novel_about, presence: true, length: {maximum: 10000, minimum: 10}
 end

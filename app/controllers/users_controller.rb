@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+	before_action  :user_admin, only: [:index]
 	def index
-		@user = User.all
+		@users = User.all
 	end
 
 	def show
@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+	    User.find(params[:id]).destroy
+
+	    redirect_to users_path
 	end
 
 	def like
@@ -26,3 +29,14 @@ class UsersController < ApplicationController
 	end
 
 end
+private
+def user_admin
+	@users =  User.all
+	if  current_user.admin  == false
+		redirect_to root_path
+	else
+		render :index
+	end
+end
+
+

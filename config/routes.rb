@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   		resource :history, only: [:create, :destroy]
   	end
   end
-  resources :relationships, only: [:create, :destroy]
   root 'novels#index'
   get 'about/index'
   resources :genres, only: [:new, :create, :destroy]

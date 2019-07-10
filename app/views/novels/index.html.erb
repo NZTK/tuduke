@@ -18,9 +18,14 @@
 								<%= simple_format(f.novel_about) %>
 								</div>
 							</div>
-							作成者：<%= link_to f.user.username, user_path(f.user.id) %>
+							作成者：<%= link_to f.user.username, user_path(f.user.id) %><br>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
-							最終更新日：
+							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %>
+							<div class= "open">
+								参加ユーザー:<% f.novel_content.map(&:user).uniq.each do |u| %>
+							                  <%= link_to u.username, user_path(u) %>
+							                  <% end  %>
+							</div>
 						</div>
 					<% end %>
 				<% else %>
@@ -33,12 +38,19 @@
 									<%= link_to tag, novels_path(tag_name: tag) %>
 								</button>
 							<% end %>
-							<div class= "novel-about">
-							<%= simple_format(f.novel_about) %>
+							<div class ="open">
+								<div class= "novel-about">
+								<%= simple_format(f.novel_about) %>
+								</div>
 							</div>
-							作成者：<%= link_to f.user.username, user_path(f.user.id) %>
+							作成者：<%= link_to f.user.username, user_path(f.user.id) %><br>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
-							最終更新日：
+							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %>
+							<div class= "open">
+								参加ユーザー:<% f.novel_content.map(&:user).uniq.each do |u| %>
+							                  <%= link_to u.username, user_path(u) %>
+							                  <% end  %>
+							</div>
 						</div>
 					<% end %>
 				<% end%>

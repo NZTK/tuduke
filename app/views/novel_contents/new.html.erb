@@ -1,6 +1,9 @@
 <%= render "common/header"%>
 <div class= "body">
 	<div class= "container">
+		<div class= "flash">
+			<%= flash[:notice]  %>
+		</div>
 		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
 		<% if @novel_content.errors.any? %>
 		<div id="error_explanation">
@@ -13,7 +16,7 @@
 		</div>
 		<% end %>
 
-		<h2><%= @novel.novel_title %></h2>
+		<h2 id= "novel-title"><%= @novel.novel_title %></h2>
 		ホストユーザー:<%= link_to @novel.user.username, user_path(@novel.user) %>
 		<h1>TUDUKI!!</h1>
 		<%= form_for(@novel_content, :url => novel_novel_contents_path) do |f| %>

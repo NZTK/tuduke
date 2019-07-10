@@ -1,1 +1,84 @@
  <%= render "common/header" %>
+ <div class= "body">
+ 	<div class= "show_head" >
+ 				<h3><%= @user.username %>さんのマイページ</h3>
+ 			</div>
+ 	<div class= "container">
+ 		<div class= "row">
+ 			<div class= "show_novels_box">
+ 				<div class= "box_head">
+ 				<h4>投稿作品</h4>
+ 				</div>
+ 				<% if @novels.blank? %>
+ 				<div class= "box_head">
+ 					<h2>投稿作品はありません</h2>
+ 				</div>
+ 				<% else %>
+	 				<% @novels.last(3).each do |f| %>
+	 					<div class= "novel-box-show">
+							<h3><%= link_to f.novel_title, novel_path(f.id) %></h3>
+							<button class= "genre"><%= link_to f.genre.genre_name ,novels_path(genre_id: f.genre.id) %></button><br>
+							<% f.tag_list.each do |tag|  %>
+								<button class="tag">
+									<%= link_to tag, novels_path(tag_name: tag) %>
+								</button>
+							<% end %>
+							<div class ="open">
+								<div class= "novel-about">
+								<%= simple_format(f.novel_about) %>
+								</div>
+							</div>
+							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
+							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %><br>
+							参加ユーザー：<% f.novel_content.map(&:user).uniq.last(5).each do |u| %>
+							<%= link_to u.username, user_path(u) %>
+							<% end  %>
+						</div>
+					<% end %>
+				<div class= "box_head">
+				<%= link_to "投稿作品一覧", novels_user_path(@user.id),  class: "btn btn-primary" %>
+				</div>
+				<%  end %>
+			</div>
+			<div class= "show_novels_box">
+				<div class= "box_head">
+					<h4>投稿小説</h4>
+				</div>
+				<% if @novel_contents.blank? %>
+				<div class= "box_head">
+					<h2>投稿小説はありません</h2>
+				</div>
+				<%  else %>
+				<% @novel_contents.last(3).each do |f| %>
+					<div class= "novel-box-show">
+						<h3><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id , f.id) %></h3>
+						作品名：<%= link_to f.novel.novel_title, novel_path(f.novel_id) %><br>
+						ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %>
+						投稿日<%= link_to f.created_at.strftime('%Y/%m/%d') %>
+					</div>
+					<% end %>
+					<div class= "box_head">
+					<%= link_to "投稿小説一覧", novel_contents_user_path(@user.id), class: "btn btn-primary" %>
+					</div>
+				<% end  %>
+			</div>
+			<div class= "user_about">
+				<table>
+					<tr>
+						<th>ID</th>
+						<td><%= @user.id %></td>
+					</tr>
+					<tr>
+						<th>ユーザーネーム</th>
+						<td><%= @user.username %></td>
+					</tr>
+					<tr>
+						<th>自己紹介</th>
+						<td><%= @user.user_about %></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "common/footer" %>

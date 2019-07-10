@@ -1,9 +1,6 @@
 <%= render "common/header" %>
 <div class= "body">
 	<div class= "container">
-		<div class= "flash">
-			<%= flash[:notice] %>
-		</div>
 		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
 		<% if @novel.errors.any? %>
 		<div id="error_explanation">

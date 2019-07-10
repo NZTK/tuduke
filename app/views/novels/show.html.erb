@@ -2,7 +2,7 @@
 <div class= "body">
   <div class ="novel_show_container">
     <div class ="index_container">
-      <h2><%= @novel.novel_title %></h2>
+      <h2 id="novel-title"><%= @novel.novel_title %></h2>
       <h3><%= link_to @novel.user.username , user_path(@novel.user.id) %></h3>
       <button class= "genre">
         <%= link_to @novel.genre.genre_name ,novels_path(genre_id: @novel.genre.id) %>
@@ -11,24 +11,29 @@
         <button class="tag">
           <%= link_to tag, novels_path(tag_name: tag) %>
         </button>
-      <% end %>
+      <% end %><br>
+      <div class= "join-user">
+      参加ユーザー<br><% @novel.novel_content.map(&:user).uniq.each do |u| %>
+                  <%= link_to u.username, user_path(u) %>
+                  <% end  %>
+      </div>
       <div class ="novel-about">
         <%= simple_format(@novel.novel_about) %>
       </div>
     </div>
     <table class ="table table-hover  table-responsive">
       <thead>
-          <th style="text-align: center;">タイトル</th>
-          <th>投稿者</th>
-          <th>投稿日</th>
-          <th>更新日</th>
+          <th id="novels_show">タイトル</th>
+          <th id="novels_show">投稿者</th>
+          <th id="novels_show">投稿日</th>
+          <th id="novels_show">更新日</th>
         </thead>
       <% @novel_contents.each do |f| %>
         <tbody>
           <tr>
 
             <td id= "title"><%= link_to f.novel_content_title, novel_novel_content_path(@novel.id, f.id) %></td>
-            <td><%= link_to f.user.username, user_path(f.user.id) %></td>
+            <td ><%= link_to f.user.username, user_path(f.user.id) %></td>
             <td><%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <td><%= f.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
           </tr>

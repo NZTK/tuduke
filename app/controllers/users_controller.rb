@@ -2,10 +2,13 @@ class UsersController < ApplicationController
 	before_action  :user_admin, only: [:index]
 	before_action :correct_user, only: [:edit]
 	def index
-		@users = User.all
+		@users = User.page(params[:page])
 	end
 
 	def show
+		@user = User.find(params[:id])
+		@novels = Novel.where(user_id: @user.id)
+		@novel_contents = NovelContent.where(user_id: @user.id)
 	end
 
 	def edit
@@ -34,6 +37,18 @@ class UsersController < ApplicationController
 	end
 
 	def history
+	end
+
+	def novels
+		@user = User.find(params[:id])
+		# @novels = Novel.where(user_id: @user)
+		@novels = Novel.page(params[:page]).where(user_id:  @user)
+		# @novels = Novel.where(user_id: @user)
+	end
+
+	def novel_contents
+		@user = User.find(params[:id])
+		@novel_contents = NovelContent.page(params[:page]).where(user_id: @user)
 	end
 
 end

@@ -1,0 +1,28 @@
+<%= render "common/header" %>
+<div class= "body">
+	<div class= "container">
+		<div class= "show_head">
+ 			<h3><%= @user.username %>さんの投稿作品一覧</h3>
+ 		</div>
+ 		<% if @novel_contents.blank? %>
+ 		<div class= "box_head">
+ 			<h2>投稿小説はありません</h2>
+ 		</div>
+ 		<%  else %>
+		<div class= "row">
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-2" >
+				<% @novel_contents.each do |f| %>
+					<div class= "novel-box">
+						<h3><%= link_to simple_format(f.novel_content_title), novel_contents_user_path(f.id) %></h3>
+						作品名：<%= link_to f.novel.novel_title ,novel_path(f.novel.id) %><br>
+						ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %><br>
+						作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
+						最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %>
+					</div>
+				<% end %>
+				<%= paginate @novel_contents %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

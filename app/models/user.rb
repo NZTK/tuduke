@@ -13,6 +13,7 @@ class User < ApplicationRecord
          has_many :comments
 
          validates :username, presence: true, uniqueness: true, length: {maximum: 15, minimum: 3}
+         validates :user_about, length: {maximum: 300}
 
 
 

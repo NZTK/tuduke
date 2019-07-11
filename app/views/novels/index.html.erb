@@ -28,6 +28,7 @@
 							</div>
 						</div>
 					<% end %>
+					<%= paginate @novels %>
 				<% else %>
 					<% @search_novels.each do |f| %>
 						<div class= "novel-box">
@@ -53,6 +54,7 @@
 							</div>
 						</div>
 					<% end %>
+					<%= paginate @search_novels %>
 				<% end%>
 			</div>
 		</div>

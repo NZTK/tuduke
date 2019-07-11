@@ -38,6 +38,8 @@ class UsersController < ApplicationController
 	end
 
 	def history
+		@user = User.find(params[:id])
+		@history = History.where(user_id: @user.id)
 	end
 
 	def novels
@@ -70,9 +72,18 @@ def user_params
 end
 def correct_user
 	@user = User.find(params[:id])
-	if current_user != @user
-		redirect_to new_user_registration_path
+	if current_user.admin  || current_user == @user
+	   	render :edit
+	else
+	   	redirect_to new_user_registration_path
 	end
+	# if current_user.admin
+	#    	render :edit
+	# elsif current_user != @user
+	#    	redirect_to new_user_registration_path
+	# else
+	# 	render :edit
+	# end
 end
 
 

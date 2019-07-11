@@ -1,4 +1,6 @@
 class NovelContentsController < ApplicationController
+	before_action :authenticate_user! ,only: [:edit, :new]
+	before_action :correct_user ,only: [:edit]
 	def new
 		@novel = Novel.find_by(id: params[:novel_id])
 		@novel_content = NovelContent.new
@@ -48,3 +50,11 @@ private
 def novel_content_params
 	params.require(:novel_content).permit(:novel_content_title, :novel_content_text, :novel_content_forewords, :novel_content_afterwords)
 end
+def correct_user
+		@novel_content= NovelContent.find(params[:id])
+		if current_user.admin  || current_user.id == @novel_content.user_id
+		   	render :edit
+		else
+		   	redirect_to new_user_registration_path
+		end
+	end

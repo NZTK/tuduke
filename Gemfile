@@ -78,6 +78,7 @@ gem "jquery-rails"
 gem 'acts-as-taggable-on'
 gem 'rails-i18n'
 gem 'font-awesome-sass'
+gem 'kaminari-bootstrap'
 
 
 

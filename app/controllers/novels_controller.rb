@@ -1,15 +1,19 @@
 class NovelsController < ApplicationController
+	before_action :authenticate_user! ,only: [:edit, :new]
+	before_action :correct_user ,only: [:edit]
+
 	def index
 		if params[:tag_name]
 			puts 'tag_name'
-			@novels = Novel.tagged_with(params[:tag_name])
+			@novels = Novel.page(params[:page]).tagged_with(params[:tag_name])
 		elsif params[:genre_id]
 			puts 'gnere_id'
-			@novels = Novel.where(genre_id: params[:genre_id]).page
+			@novels = Novel.page(params[:page]).where(genre_id: params[:genre_id])
 		else
 			puts 'other'
 			@search = Novel.ransack(params[:q])
-			@search_novels = @search.result
+			@search_novels = @search.result.page(params[:page])
+			# @paginatable_array = Kaminari.paginate_array(@search_novels).page(params[:page])
 		end
 
 	end
@@ -20,6 +24,7 @@ class NovelsController < ApplicationController
 	end
 
 	def edit
+		@novel = Novel.find(params[:id])
 	end
 
 	def new
@@ -46,5 +51,14 @@ class NovelsController < ApplicationController
 	private
 	def novel_params
 		params.require(:novel).permit(:novel_title, :novel_about, :tag_list, :genre_id)
+	end
+
+	def correct_user
+		@novel = Novel.find(params[:id])
+		if current_user.admin  || current_user.id == @novel.user_id
+		   	render :edit
+		else
+		   	redirect_to new_user_registration_path
+		end
 	end
 end

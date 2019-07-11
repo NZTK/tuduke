@@ -393,5 +393,106 @@ input {
 	text-align: center;
 	font-size: 30px;
 }
+.page {
+    margin: 0 3px;
+    border-radius: 2px;
+}
+.pagination {
+	text-align: center;
+	display: inherit;
+}
+.page > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+.page > a:hover{
+	background: #007bff;
+    color: white;
+}
+.current {
+	background: #007bff;
+    color: white;
+    border-color: #007bff;
+    padding: 4px 9px 4px 8px;
+    border-radius: 4px;
+}
+
+.next {
+    margin: 0 3px;
+}
+.next > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+.next > a:hover {
+	background: #007bff;
+    color: white;
+}
+.last {
+    margin: 0 3px;
+}
+.last > a{
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0px 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.last > a:hover {
+	background: #007bff;
+    color: white;
+}
+.first {
+	margin: 0 3px;
+}
+
+.first > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.first > a:hover {
+	background: #007bff;
+    color: white;
+}
+
+.prev {
+	margin: 0 3px;
+}
+
+.prev > a{
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.prev > a:hover {
+	background: #007bff;
+    color: white;
+}
+
+
 
 

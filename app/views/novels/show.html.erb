@@ -20,6 +20,9 @@
       <div class ="novel-about">
         <%= simple_format(@novel.novel_about) %>
       </div>
+      <% if current_user.id == @novel.user_id || current_user.admin? %>
+      <%= link_to "編集", edit_novel_path(@novel) , class: "btn btn-info"%>
+      <% end %>
     </div>
     <table class ="table table-hover  table-responsive">
       <thead>

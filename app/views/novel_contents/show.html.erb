@@ -1,1 +1,45 @@
-show
+<%= render "common/header" %>
+<div class= "body">
+	<div class= "novel_content_head">
+		<%= link_to @novel.novel_title, novel_path(@novel) %>
+		/
+		<%= link_to @novel.user.username, user_path(@novel.user.id) %>
+	</div>
+	<div class= "novel-content-title">
+		<h2><%= @novel_content.novel_content_title %></h2>
+		<h4><%= link_to @novel_content.user.username, user_path(@novel_content.user.id) %></h4>
+	</div>
+
+	<div class= "novel-content-foreword">
+		<%= simple_format(@novel_content.novel_content_forewords) %>
+	</div>
+	<div class ="novel-content-text">
+		<%= simple_format(@novel_content.novel_content_text ) %>
+	</div>
+	<div class= "novel-content-afterword">
+		<%= simple_format(@novel_content.novel_content_afterwords) %>
+	</div>
+	<div class= "novel-content-botton">
+		<span class= "botton-btn">
+		<% if @prev.present? %>
+		<%= link_to "前へ", novel_novel_content_path(@novel, @prev) %>
+		<% else %>
+		x
+		<% end %>
+		</span>
+		|
+		<span class= "botton-btn">
+		<%= link_to "目次", novel_path(@novel) %>
+		</span>
+		|
+		<span class= "botton-btn">
+		<% if @next.present? %>
+		<%= link_to "次へ", novel_novel_content_path(@novel, @next)  %>
+		<% else %>
+		x
+		<% end %>
+	 	</span>
+	</div>
+</div>
+
+<%= render "common/footer" %>

@@ -16,7 +16,6 @@ class NovelsController < ApplicationController
 
 	def show
 		@novel =  Novel.find(params[:id])
-		
 		@novel_contents = NovelContent.where(novel_id:  params[:id])
 	end
 

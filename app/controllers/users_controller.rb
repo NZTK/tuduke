@@ -8,7 +8,8 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@novels = Novel.where(user_id: @user.id)
-		@novel_contents = NovelContent.where(user_id: @user.id)
+		@novel_contents = NovelContent.where(user_id: @user.id).order(created_at: "DESC")
+
 	end
 
 	def edit
@@ -42,13 +43,15 @@ class UsersController < ApplicationController
 	def novels
 		@user = User.find(params[:id])
 		# @novels = Novel.where(user_id: @user)
-		@novels = Novel.page(params[:page]).where(user_id:  @user)
+		@novels = Novel.page(params[:page]).where(user_id:  @user).order(created_at: "DESC")
+
 		# @novels = Novel.where(user_id: @user)
 	end
 
 	def novel_contents
 		@user = User.find(params[:id])
-		@novel_contents = NovelContent.page(params[:page]).where(user_id: @user)
+		@novel_contents = NovelContent.page(params[:page]).where(user_id: @user).order(created_at: "DESC")
+
 	end
 
 end

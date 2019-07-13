@@ -2,33 +2,37 @@ class NovelContentsController < ApplicationController
 	before_action :authenticate_user! ,only: [:edit, :new]
 	before_action :correct_user ,only: [:edit]
 	def new
-		@novel = Novel.find_by(id: params[:novel_id])
 		@novel_content = NovelContent.new
+		@novel = Novel.find_by(id: params[:novel_id])
 	end
 
 	def show
+
 		@novel_content = NovelContent.find(params[:id])
 		@novel = Novel.find_by(id: @novel_content.novel.id)
+
 		new_history =  @novel_content.history.new
 		new_history.user_id = current_user.id
+		if current_user.histories.exists?(novel_content_id: @novel_content)
 
-		if current_user.histories.exists?(novel_content_id: "#{params[:id]}")
-		   old_history = current_user.histories.find_by(novel_content_id: "#{params[:id]}")
+		   old_history = current_user.histories.find_by(novel_content_id: @novel_content)
 		   old_history.destroy
 		end
 
 		new_history.save
-
-		if NovelContent.where( "novel_id = ? and id < ?" ,@novel_content.novel.id , @novel_content.id).exists?
+		if	NovelContent.where( "novel_id = ? and id < ?" ,@novel_content.novel.id , @novel_content.id).exists?
 			@prev = NovelContent.where('id < ?  and  novel_id = ?', @novel_content.id, @novel_content.novel.id).max
 		end
 		if NovelContent.where( "novel_id = ? and id > ?" ,@novel_content.novel.id , @novel_content.id).exists?
 			@next = NovelContent.where('id > ?  and  novel_id = ?', @novel_content.id, @novel_content.novel.id).min
 		end
+
+		@comment = Comment.new
+		@comments = @novel_content.comments
 	end
 
 	def create
-		@novel  = Novel.find_by(id: params[:novel_id])
+		@novel = Novel.find_by(id: params[:novel_id])
 		@novel_content = NovelContent.new(novel_content_params)
 		@novel_content.user_id = current_user.id
 		@novel_content.novel_id = @novel.id

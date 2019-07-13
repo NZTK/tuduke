@@ -497,5 +497,38 @@ input {
 	text-align: center;
 }
 
+.comment{
+	width: 50%;
+    margin: auto;
+    border: double;
+    padding: 6px;
+    background-color: aliceblue;
+}
 
+.comment_textarea > textarea {
+	height: 100px;
+}
+.comment_actions  > input{
+	color: white;
+    background: limegreen;
+    line-height: 3;
+    width: 100px;
+    width: 20%;
+    border-radius: 10px;
+    font-size: 18px;
+}
 
+.comment_actions  > input:hover{
+	background-color: orange;
+}
+
+.comment-index {
+	border: solid 1px;
+    padding: 10px;
+    margin-bottom: 9px;
+    background: white;
+}
+
+.comment-user > a{
+	color: cornflowerblue;
+}

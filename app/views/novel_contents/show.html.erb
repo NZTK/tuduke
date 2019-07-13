@@ -23,9 +23,9 @@
 		<%= simple_format(@novel_content.novel_content_afterwords) %>
 	</div>
 	<div class= "novel-content-botton">
-		<span class= "botton-btn">
+
 		<% if @prev.present? %>
-		<%= link_to "前へ", novel_novel_content_path(@novel, @prev) %>
+		<%= link_to "前へ",novel_novel_content_path(@novel, @prev) %>
 		<% else %>
 		×
 		<% end %>
@@ -42,6 +42,17 @@
 		×
 		<% end %>
 	 	</span>
+	</div>
+	<div class= "comment">
+		<h4>コメント</h4>
+		<div id= "comments_area" >
+			<div class= "comment-index">
+			<%= render partial: "comments/index",  locals: {comments: @comments} %>
+			</div>
+		</div>
+		<% if user_signed_in? %>
+		<%= render partial: "comments/form", locals: {comment: @comment, novel_content: @novel_content, novel: @novel} %>
+		<% end %>
 	</div>
 </div>
 

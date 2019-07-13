@@ -31,6 +31,8 @@
           <th id="novels_show">投稿者</th>
           <th id="novels_show">投稿日</th>
           <th id="novels_show">更新日</th>
+          <th></th>
+          <th></th>
         </thead>
       <% @novel_contents.each do |f| %>
         <tbody>
@@ -40,6 +42,8 @@
             <td ><%= link_to f.user.username, user_path(f.user.id) %></td>
             <td><%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <td><%= f.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <td><i class="far fa-comment-dots"></i><%= f.comments.count %></td>
+            <td><i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %></td>
           </tr>
         </tbody>
       <% end %>

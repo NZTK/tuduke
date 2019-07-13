@@ -16,6 +16,9 @@
 						<h3><%= link_to simple_format(f.novel_content_title), novel_novel_content_path(f.novel.id, f.id) %></h3>
 						作品名：<%= link_to f.novel.novel_title ,novel_path(f.novel.id) %><br>
 						ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %><br>
+						<i class="far fa-comment-dots"></i><%= f.comments.count %>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= f.likes.count %>
+						<br>
 						作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
 						最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %>
 					</div>

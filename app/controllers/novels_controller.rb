@@ -48,6 +48,16 @@ class NovelsController < ApplicationController
 		end
 	end
 
+	def update
+		@novel = Novel.find(params[:id])
+		if  @novel.update(novel_params)
+			flash[:notice] = "更新しました"
+		    redirect_to novel_path(@novel)
+		else
+			render action: "edit"
+		end
+	end
+
 	private
 	def novel_params
 		params.require(:novel).permit(:novel_title, :novel_about, :tag_list, :genre_id)

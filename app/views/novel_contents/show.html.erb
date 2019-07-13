@@ -9,8 +9,10 @@
 	<div class= "novel-content-title">
 		<h2><%= @novel_content.novel_content_title %></h2>
 		<h4><%= link_to @novel_content.user.username, user_path(@novel_content.user.id) %></h4>
-	</div>
-
+	    <% if current_user.id == @novel_content.user_id || current_user.admin? %>
+        <%= link_to "編集", edit_novel_novel_content_path(@novel_content.novel.id, @novel_content.id) , class: "btn btn-info"%>
+        <% end %>
+    </div>
 	<div class= "novel-content-foreword">
 		<%= simple_format(@novel_content.novel_content_forewords) %>
 	</div>

@@ -41,7 +41,7 @@ class NovelContentsController < ApplicationController
 	end
 
 	def edit
-		@novel = Novel.find(params[:id])
+		@novel_content = NovelContent.find(params[:id])
 	end
 
 	def update
@@ -65,7 +65,7 @@ end
 def correct_user
 		@novel_content= NovelContent.find(params[:id])
 		if current_user.admin  || current_user.id == @novel_content.user_id
-		   	render :edit
+		   	render action:  "edit"
 		else
 		   	redirect_to new_user_registration_path
 		end

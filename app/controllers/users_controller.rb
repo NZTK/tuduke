@@ -76,7 +76,8 @@ def correct_user
 	if current_user.admin  || current_user == @user
 	   	render :edit
 	else
-	   	redirect_to new_user_registration_path
+		flash[:alert] = "権限がありません"
+	   	redirect_to root_path
 	end
 	# if current_user.admin
 	#    	render :edit

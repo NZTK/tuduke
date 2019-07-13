@@ -68,7 +68,8 @@ class NovelsController < ApplicationController
 		if current_user.admin  || current_user.id == @novel.user_id
 		   	render :edit
 		else
-		   	redirect_to new_user_registration_path
+			flash[:alert] = "権限がありません"
+		   	redirect_to root_path
 		end
 	end
 end

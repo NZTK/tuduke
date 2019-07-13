@@ -100,3 +100,13 @@ $(document).ready(function($){
 // 	lessLink: '<a  class="btn  btn_close" href="#"><span>閉じる</span></a>'
 // 	});
 // });
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users, only: [:index, :edit, :show, :update, :destroy] do
+  resources :users, only: [:index, :edit, :show, :update, :destroy], shallow: true do
   	member do
   		get 'like'
   		get 'history'
@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   	collection do
   		get 'ranking'
   	end
-  	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy, :create] do
-  		resource :comments, only: [:create, :destroy]
+  	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy, :create]  do
+  		resources :comments
   		resource :likes, only: [:create, :destroy]
   		resource :history, only: [:create, :destroy]
   	end

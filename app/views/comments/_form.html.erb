@@ -1,0 +1,9 @@
+
+<%= form_with model: [novel_content, comment],  url: novel_novel_content_comments_path(novel, novel_content) do  |f| %>
+<div class= "comment_textarea">
+	<%=  f.text_area :comment_contents, placeholder: "コメントを書く" %>
+</div>
+<div class= "comment_actions">
+	<%= f.submit "コメントする" %>
+</div>
+<% end %>

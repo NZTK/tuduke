@@ -15,11 +15,10 @@
 			</ul>
 		</div>
 		<% end %>
-
 		<h2 id= "novel-title"><%= @novel.novel_title %></h2>
 		ホストユーザー:<%= link_to @novel.user.username, user_path(@novel.user) %>
 		<h1>TUDUKI!!</h1>
-		<%= form_with model: @novel_content, :url novel_novel_contents_path, local: true  do |f| %>
+		<%= form_with model: @novel_content ,url: novel_novel_contents_path, local: true  do |f| %>
 		<h3 style="color: red">*印は必須</h3>
 			<div class= "field novel-field" >
 				<%= f.label :novel_content_title, "タイトル　~500文字" %><i style="color: red">*</i>

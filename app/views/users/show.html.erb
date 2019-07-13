@@ -33,7 +33,7 @@
 								</div>
 							</div>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
-							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %><br>
+							最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %><br>
 							参加ユーザー：<% f.novel_content.map(&:user).uniq.last(5).each do |u| %>
 							<%= link_to u.username, user_path(u) %>
 							<% end  %>

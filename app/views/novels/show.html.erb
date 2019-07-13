@@ -36,7 +36,7 @@
         <tbody>
           <tr>
 
-            <td id= "title"><%= link_to f.novel_content_title, novel_novel_content_path(@novel.id, f.id) %></td>
+            <td id= "title"><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id,f.id) %></td>
             <td ><%= link_to f.user.username, user_path(f.user.id) %></td>
             <td><%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             <td><%= f.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>

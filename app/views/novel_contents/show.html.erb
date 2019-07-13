@@ -1,5 +1,6 @@
 <%= render "common/header" %>
 <div class= "body">
+	<%= render "common/alert" %>
 	<div class= "novel_content_head">
 		<%= link_to @novel.novel_title, novel_path(@novel) %>
 		/
@@ -24,7 +25,7 @@
 		<% if @prev.present? %>
 		<%= link_to "前へ", novel_novel_content_path(@novel, @prev) %>
 		<% else %>
-		x
+		×
 		<% end %>
 		</span>
 		|
@@ -36,7 +37,7 @@
 		<% if @next.present? %>
 		<%= link_to "次へ", novel_novel_content_path(@novel, @next)  %>
 		<% else %>
-		x
+		×
 		<% end %>
 	 	</span>
 	</div>

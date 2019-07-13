@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		if @user.update(user_params)
+			flash[:notice] = "マイページを更新しました"
 			redirect_to user_path(@user.id)
 		else
 			render action: "edit"
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
 
 	def destroy
 	    User.find(params[:id]).destroy
-
+	    flash[:alert] = "退会しました"
 	    redirect_to users_path
 	end
 

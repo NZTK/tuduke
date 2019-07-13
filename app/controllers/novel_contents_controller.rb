@@ -33,6 +33,7 @@ class NovelContentsController < ApplicationController
 		@novel_content.user_id = current_user.id
 		@novel_content.novel_id = @novel.id
 		if @novel_content.save
+			flash[:notice] = "投稿しました"
 			redirect_to novel_path(@novel.id)
 		else
 			render action: 'new'
@@ -40,6 +41,17 @@ class NovelContentsController < ApplicationController
 	end
 
 	def edit
+		@novel = Novel.find(params[:id])
+	end
+
+	def update
+		@novel_content = NovelContent.find(params[:id])
+		if  @novel_content.update(novel_content_params)
+			flash[:notice] = "更新しました"
+		    redirect_to novel_novel_content_path(@novel_content.novel.id, @novel_content.id)
+		else
+			render action: "edit"
+		end
 	end
 
 	def destroy

@@ -1,1 +1,49 @@
-edit
+<%= render "common/header" %>
+<div class= "body">
+	<div class= "container">
+		<div class= "flash">
+			<%= flash[:notice]  %>
+		</div>
+		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+		<% if @novel_content.errors.any? %>
+		<div id="error_explanation">
+			<ul>
+				<h3><%= @novel_content.errors.count %>件のエラーです</h3>
+				<%= @novel_content.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+
+		<h2 id= "novel-title"><%= @novel_content.novel.novel_title %></h2>
+		ホストユーザー:<%= link_to @novel_content.user.username, user_path(@novel_content.novel.user) %>
+		<h1>編集</h1>
+		<%= form_with model: @novel_content, url: novel_novel_content_path, local: true do |f| %>
+		<h3 style="color: red">*印は必須</h3>
+			<div class= "field novel-field" >
+				<%= f.label :novel_content_title, "タイトル　~500文字" %><i style="color: red">*</i>
+				<%= f.text_field :novel_content_title, placeholder: "タイトルを入力　~50文字" %>
+				<p id="counter-3">0文字</p>
+			</div>
+			<div class ="field content-field">
+				<%= f.label :novel_content_forewords, "前書き  ~500文字" %>
+				<%= f.text_area :novel_content_forewords, placeholder: "前書き ~500文字" %>
+				<p id="counter-4">0文字</p>
+			</div>
+			<div>
+				<%= f.label :novel_content_text, "本文　300~50000文字" %><i style="color: red">*</i>
+				<%= f.text_area :novel_content_text, placeholder: "本文  300~50000文字" %>
+				<p id="counter-5">0文字</p>
+			</div>
+			<div class ="field content-field">
+				<%= f.label :novel_content_afterwords, "後書き　~500文字" %>
+				<%= f.text_area :novel_content_afterwords, placeholder: "後書き ~500文字" %>
+				<p id="counter-6">0文字</p>
+			</div>
+			<h4><%= f.submit "変更を保存" ,class: "btn btn-primary btn-block", date:{ confirm: "更新しますか？"}%></h4>
+		<% end %>
+</div>
+</div>
+</div>
+<%= render "common/footer" %>

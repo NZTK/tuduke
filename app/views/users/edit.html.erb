@@ -17,7 +17,7 @@
 					<h2>登録情報編集</h2>
 				</div>
 				<div class= "form-body">
-					<%=  form_for(@user) do |f|  %>
+					<%=  form_with model: @user, local: true do |f|  %>
 					<%= render "devise/shared/error_messages", resource: resource %>
                     <div class="form-group">
                       <div class="field">
@@ -35,6 +35,7 @@
                       <div class="field user_about_field">
                         <%= f.label :user_about, "自己紹介" %><br />
                         <%= f.text_area :user_about, autofocus: true, class:"form-control " , id:"user_about", placeholder:"~300文字" %>
+                        <p id="counter-7">0文字</p>
                       </div>
                     </div>
                     <div class="actions">

@@ -16,7 +16,7 @@
 
 			<%= form_with model: @novel, local: true do  |f| %>
 			<div class= "field novel-field" >
-				<%= f.label :novel_title, "作品名 =50文字" %>
+				<%= f.label :novel_title, "作品名 ~50文字" %>
 				<%= f.text_field :novel_title, placeholder: "作品名を入力　~50文字" %>
 				<p id="counter-1">0文字</p>
 			</div>

@@ -1,9 +1,9 @@
 <%= render "common/header" %>
 <div class= "body">
+	<%= render "common/alert" %>
 	<div class= "container">
 		<div class= "row">
 			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-2" >
-				<%= render "common/alert" %>
 				<%if @novels %>
 					<% @novels.each do |f| %>
 						<div class= "novel-box">

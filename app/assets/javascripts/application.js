@@ -62,6 +62,13 @@ $(function(){
 });
 
 $(function(){
+	$("#user_about").on("keyup", function(){
+		let countNum = String($(this).val().length);
+		$("#counter-7").text(countNum + "文字");
+	});
+});
+
+$(function(){
   $(".dropdwn_btn-1").on("click", function(){
     $(".1st").slideToggle();
   });

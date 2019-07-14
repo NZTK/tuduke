@@ -1,9 +1,9 @@
 <%= render "common/header" %>
 <div class= "body">
-	<div class= "container">
-		<div class= "show_head">
- 			<h3><%= @user.username %>さんの投稿作品一覧</h3>
+	<div class= "show_head">
+ 			<h3><%= @user.username %>さんの投稿小説一覧</h3>
  		</div>
+	<div class= "container-fluid">
  		<% if @novel_contents.blank? %>
  		<div class= "box_head">
  			<h2>投稿小説はありません</h2>

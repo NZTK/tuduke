@@ -1,4 +1,5 @@
 <% if comments.present? %>
+<i><%= novel_content.comments.count %>件</i>
 	<% comments.each  do |comment| %>
 	<% if comment.user == current_user %>
 	  <p class= "comment-user">

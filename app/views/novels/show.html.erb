@@ -25,6 +25,7 @@
       <%= link_to "編集", edit_novel_path(@novel) , class: "btn btn-info"%>
       <% end %>
     </div>
+    <% if @novel_contents.exists? %>
     <table class ="table table-hover  table-responsive">
       <thead>
           <th id="novels_show">タイトル</th>
@@ -34,19 +35,22 @@
           <th></th>
           <th></th>
         </thead>
-      <% @novel_contents.each do |f| %>
-        <tbody>
-          <tr>
+        <% @novel_contents.each do |f| %>
+          <tbody>
+            <tr>
 
-            <td id= "title"><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id,f.id) %></td>
-            <td ><%= link_to f.user.username, user_path(f.user.id) %></td>
-            <td><%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-            <td><%= f.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-            <td><i class="far fa-comment-dots"></i><%= f.comments.count %></td>
-            <td><i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %></td>
-          </tr>
-        </tbody>
-      <% end %>
+              <td id= "title"><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id,f.id) %></td>
+              <td ><%= link_to f.user.username, user_path(f.user.id) %></td>
+              <td><%= f.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td><%= f.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td><i class="far fa-comment-dots"></i><%= f.comments.count %></td>
+              <td><i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %></td>
+            </tr>
+          </tbody>
+        <% end %>
     </table>
+    <% else %>
+    <i>まだ投稿されていません</i><br>
+    <% end %>
 
       <%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>

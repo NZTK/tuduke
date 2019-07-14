@@ -41,28 +41,16 @@
 		<% else %>
 		×
 		<% end %>
-		<% if user_signed_in? %>
-			<% if @novel_content.liked_by?(current_user) %>
-              <p>
-                <%= link_to novel_novel_content_likes_path(@novel, @novel_content), method: :delete do %>
-                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to novel_novel_content_likes_path(@novel, @novel_content), method: :post do %>
-                  <i class="far fa-heart" aria-hidden="true" style="color: black;" ></i>
-                <% end %>
-              </p>
-            <% end %>
-        <% end %>
+		<div id= 'likes_buttons_<%= @novel_content.id %>'>
+			<%= render partial: 'likes/like', locals: {novel:  @novel, novel_content:  @novel_content} %>
+		</div>
 	 	</span>
 	</div>
 	<div class= "comment">
 		<h4>コメント</h4>
 		<div id= "comments_area" >
 			<div class= "comment-index">
-			<%= render partial: "comments/index",  locals: {comments: @comments} %>
+			<%= render partial: "comments/index",  locals: {comments: @comments, novel_content: @novel_content} %>
 			</div>
 		</div>
 		<% if user_signed_in? %>

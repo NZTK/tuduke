@@ -314,7 +314,6 @@ input {
 
 .show_novels_box {
 	border: double;
-    width: 60%;
     margin: 20px auto;
     background-color: aliceblue;
 }
@@ -345,10 +344,7 @@ input {
 	margin: auto;
 }
 
-.user_about {
-	width: 60%;
-    margin: auto;
-}
+
 .user_about > table > tbody > tr > th {
 	border: solid 1px;
 	text-align: center;
@@ -503,6 +499,7 @@ input {
     border: double;
     padding: 6px;
     background-color: aliceblue;
+    margin-bottom: 20px
 }
 
 .comment_textarea > textarea {
@@ -531,4 +528,8 @@ input {
 
 .comment-user > a{
 	color: cornflowerblue;
+}
+
+.box_head > a{
+	margin-bottom: 10px;
 }

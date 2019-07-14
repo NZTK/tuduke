@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+	<% if novel_content.liked_by?(current_user) %>
+    <p>
+      <%= link_to novel_novel_content_likes_path(novel, novel_content), method: :delete, remote: true do %>
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+        <i><%= novel_content.likes.count %></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to novel_novel_content_likes_path(novel, novel_content), method: :post, remote: true do %>
+        <i class="far fa-heart" aria-hidden="true" style="color: black;" ></i>
+      <% end %>
+      <i><%= novel_content.likes.count %></i>
+    </p>
+  <% end %>
+<% end %>

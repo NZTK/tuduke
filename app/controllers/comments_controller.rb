@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		@novel_content = NovelContent.find(params[:novel_content_id])
 		@comment = Comment.find(params[:id])
 		if @comment.destroy
 			render :index

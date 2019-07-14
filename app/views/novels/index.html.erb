@@ -31,10 +31,15 @@
 							                  <%= link_to u.username, user_path(u) %>
 							                  <% end  %>
 							</div>
+							<i class="far fa-eye"></i><%= f.impressions_count %><br>
+							<i class="fas fa-heart" , style="color: red;"></i><%= all_likes_count(f) %>
+							<i class="far fa-comment-dots"></i><%= all_comments_count(f) %>
+							<i class="fas fa-eye"></i><%= all_views_count(f) %>
 						</div>
 					<% end %>
 					<%= paginate @novels %>
 				<% else %>
+
 					<% @search_novels.each do |f| %>
 						<div class= "novel-box">
 							<h3><%= link_to f.novel_title, novel_path(f.id) %></h3>
@@ -61,6 +66,10 @@
 							                  <%= link_to u.username, user_path(u) %>
 							                  <% end  %>
 							</div>
+							<i class="far fa-eye"></i><%= f.impressions_count %><br>
+							<i class="fas fa-heart" , style="color: red;"></i><%= all_likes_count(f) %>
+							<i class="far fa-comment-dots"></i><%= all_comments_count(f) %>
+							<i class="fas fa-eye"></i><%= all_views_count(f) %>
 						</div>
 					<% end %>
 					<%= paginate @search_novels %>

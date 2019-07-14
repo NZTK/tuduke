@@ -3,9 +3,11 @@
  	<%= render "common/alert" %>
  	<div class= "show_head" >
  		<h3><%= @user.username %>さんのマイページ</h3>
- 		<% if current_user == @user or current_user.admin? %>
- 		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-info" %>
- 		<% end %>
+ 		<% if user_signed_in? %>
+	 		<% if current_user == @user or current_user.admin? %>
+	 		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-info" %>
+	 		<% end %>
+	 	<% end %>
  	</div>
  	<div class= "container-fluid">
  		<div class= "row">
@@ -59,7 +61,11 @@
 						<h3><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id , f.id) %></h3>
 						作品名：<%= link_to f.novel.novel_title, novel_path(f.novel_id) %><br>
 						ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %>
-						投稿日<%= link_to f.created_at.strftime('%Y/%m/%d') %>
+						投稿日<%= link_to f.created_at.strftime('%Y/%m/%d') %><br>
+						<i class="far fa-comment-dots"></i><%= f.comments.count %>
+              			<i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %>
+              			<i class="fas fa-eye"></i><%= f.impressions_count %>
+            </tr>
 					</div>
 					<% end %>
 					<div class= "box_head">
@@ -68,7 +74,7 @@
 				<% end  %>
 			</div>
 			<div class= "user_about">
-				<table style="width: 100%;">
+				<table >
 					<tr>
 						<th>ID</th>
 						<td><%= @user.id %></td>

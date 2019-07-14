@@ -10,21 +10,22 @@ class NovelContentsController < ApplicationController
 
 		@novel_content = NovelContent.find(params[:id])
 		@novel = Novel.find_by(id: @novel_content.novel.id)
+		if user_signed_in?
+			new_history =  @novel_content.history.new
+			new_history.user_id = current_user.id
+			if current_user.histories.exists?(novel_content_id: @novel_content)
 
-		new_history =  @novel_content.history.new
-		new_history.user_id = current_user.id
-		if current_user.histories.exists?(novel_content_id: @novel_content)
+			   old_history = current_user.histories.find_by(novel_content_id: @novel_content)
+			   old_history.destroy
+			end
 
-		   old_history = current_user.histories.find_by(novel_content_id: @novel_content)
-		   old_history.destroy
-		end
+			new_history.save
 
-		new_history.save
-
-		histories_stock_limit = 20
-		histories = current_user.histories.all
-		if histories.count > histories_stock_limit
-			histories[0].destroy
+			histories_stock_limit = 20
+			histories = current_user.histories.all
+			if histories.count > histories_stock_limit
+				histories[0].destroy
+			end
 		end
 
 		if	NovelContent.where( "novel_id = ? and id < ?" ,@novel_content.novel.id , @novel_content.id).exists?
@@ -36,6 +37,7 @@ class NovelContentsController < ApplicationController
 
 		@comment = Comment.new
 		@comments = @novel_content.comments
+		impressionist(@novel_content, nil, :unique => [:session_hash])
 	end
 
 	def create

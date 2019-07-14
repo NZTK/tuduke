@@ -29,7 +29,11 @@
 						最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %><br>
 						参加ユーザー<% f.novel_content.map(&:user).uniq.each do |u| %>
 						<%= link_to u.username, user_path(u) %>
-						<% end  %>
+						<% end  %><br>
+						<i class="far fa-eye"></i><%= f.impressions_count %><br>
+						<i class="fas fa-heart" , style="color: red;"></i><%= all_likes_count(f) %>
+						<i class="far fa-comment-dots"></i><%= all_comments_count(f) %>
+						<i class="fas fa-eye"></i><%= all_views_count(f) %>
 					</div>
 				<% end %>
 				<%= paginate @novels %>

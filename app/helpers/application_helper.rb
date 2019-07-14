@@ -27,6 +27,7 @@ module ApplicationHelper
    	end
    	return sum
    end
+
 def resource
    @resource ||= User.new
 end

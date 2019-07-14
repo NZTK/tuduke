@@ -1,1 +1,60 @@
-ranking
+<%= render "common/header" %>
+<div class= "body">
+	<div class= "container">
+		<div class= "row">
+			<div class= "col-lg-3 col-md-6 col-xs-6">
+				<div class= "ranking-box">
+					<h4>Likeランキング<i class="fas fa-heart" , style="color: red;"></i></h4>
+					<% @like_ranks.each.with_index(1) do |like, i| %>
+					<%= render partial: "ranking_novel_content" ,locals: {f: like, i: i} %>
+					<% end %>
+				</div>
+			</div>
+			<div class= "col-lg-3 col-md-6 col-xs-6 ">
+				<div class= "ranking-box">
+					<h4>PVランキング<i class="far fa-eye"></i></h4>
+					<% @novel_most_viewed.each.with_index(1) do |n, i| %>
+					<%= render partial: "ranking_novel", locals: {f: n, i: i} %>
+					<% end %>
+				</div>
+			</div>
+			<div class= "col-lg-3 col-md-6 col-xs-6">
+				<div class= "ranking-box">
+					<h4>PVランキング(小説)<i class="fas fa-eye"></i></h4>
+					<% @novel_content_most_viewed.each.with_index(1) do |f,  i| %>
+					<%= render partial: "ranking_novel_content" ,locals: {f: f, i: i} %>
+					<% end %>
+				</div>
+			</div>
+			<div class= "col-lg-3 col-md-6 col-xs-6">
+				<div class= "ranking-box">
+					<h4>コメント数ランキング<i class="fas fa-users"></i></h4>
+					<% @comment_ranks.each.with_index(1) do |like, i| %>
+					<%= render partial: "ranking_novel_content" ,locals: {f: like, i: i} %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class= "row">
+			<% @novel_genres.each do |g| %>
+			<div class= "col-lg-3 col-md-6 col-xs-6">
+				<div class= "ranking-box">
+					<h4>PVランキング<i class="far fa-eye"></i></h4>
+					<% @novel_most_viewed.each.with_index(1) do |n, i| %>
+					<%= render partial: "ranking_novel", locals: {f: n, i: i} %>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+			<div class= "col-lg-3 col-md-6 col-xs-6">
+				<div class= "ranking-box">
+					<h4>ランキング<i class="fas fa-users"></i></h4>
+					<% @novel_most_viewed.each.with_index(1) do |like, i| %>
+					<%= render partial: "ranking_novel" ,locals: {f: like, i: i} %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

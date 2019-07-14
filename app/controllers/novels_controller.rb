@@ -50,6 +50,16 @@ class NovelsController < ApplicationController
 	end
 
 	def ranking
+		@like_ranks = NovelContent.find(Like.group(:novel_content_id).order('count(novel_content_id) desc').limit(5).pluck(:novel_content_id))
+		@novel_most_viewed = Novel.order('impressions_count desc').limit(3)
+		@novel_content_most_viewed = NovelContent.order('impressions_count desc').limit(5)
+		@comment_ranks = NovelContent.find(Comment.group(:novel_content_id).order('count(novel_content_id) desc').limit(5).pluck(:novel_content_id))
+
+		@novel_genres = Novel.group(:genre_id)
+		binding.pry
+		
+		# binding.pry
+		# @genre_most_viewed = @novel_genre.order('impressions_count desc').limit(3)
 	end
 
 	def create

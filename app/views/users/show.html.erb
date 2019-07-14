@@ -22,25 +22,7 @@
  				</div>
  				<% else %>
 	 				<% @novels.last(3).each do |f| %>
-	 					<div class= "novel-box-show">
-							<h3><%= link_to f.novel_title, novel_path(f.id) %></h3>
-							<button class= "genre"><%= link_to f.genre.genre_name ,novels_path(genre_id: f.genre.id) %></button><br>
-							<% f.tag_list.each do |tag|  %>
-								<button class="tag">
-									<%= link_to tag, novels_path(tag_name: tag) %>
-								</button>
-							<% end %>
-							<div class ="open">
-								<div class= "novel-about">
-								<%= simple_format(f.novel_about) %>
-								</div>
-							</div>
-							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
-							最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %><br>
-							参加ユーザー：<% f.novel_content.map(&:user).uniq.last(5).each do |u| %>
-							<%= link_to u.username, user_path(u) %>
-							<% end  %>
-						</div>
+	 					<%= render partial: "novels/novel" ,locals: {f: f} %>
 					<% end %>
 				<div class= "box_head">
 				<%= link_to "投稿作品一覧", novels_user_path(@user.id),  class: "btn btn-primary" %>
@@ -57,17 +39,8 @@
 				</div>
 				<%  else %>
 				<% @novel_contents.last(3).each do |f| %>
-					<div class= "novel-box-show">
-						<h3><%= link_to f.novel_content_title, novel_novel_content_path(f.novel_id , f.id) %></h3>
-						作品名：<%= link_to f.novel.novel_title, novel_path(f.novel_id) %><br>
-						ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %>
-						投稿日<%= link_to f.created_at.strftime('%Y/%m/%d') %><br>
-						<i class="far fa-comment-dots"></i><%= f.comments.count %>
-              			<i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %>
-              			<i class="fas fa-eye"></i><%= f.impressions_count %>
-            </tr>
-					</div>
-					<% end %>
+					<%= render partial: "novels/content" ,locals: {f: f} %>
+				<% end %>
 					<div class= "box_head">
 					<%= link_to "投稿小説一覧", novel_contents_user_path(@user.id), class: "btn btn-primary" %>
 					</div>

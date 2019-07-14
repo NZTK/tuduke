@@ -20,6 +20,13 @@ class NovelContentsController < ApplicationController
 		end
 
 		new_history.save
+
+		histories_stock_limit = 20
+		histories = current_user.histories.all
+		if histories.count > histories_stock_limit
+			histories[0].destroy
+		end
+
 		if	NovelContent.where( "novel_id = ? and id < ?" ,@novel_content.novel.id , @novel_content.id).exists?
 			@prev = NovelContent.where('id < ?  and  novel_id = ?', @novel_content.id, @novel_content.novel.id).max
 		end

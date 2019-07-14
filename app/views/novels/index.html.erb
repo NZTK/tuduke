@@ -1,9 +1,9 @@
 <%= render "common/header" %>
 <div class= "body">
 	<%= render "common/alert" %>
-	<div class= "container">
+	<div class= "container-fruid">
 		<div class= "row">
-			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-2" >
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-" >
 				<%if @novels %>
 					<% @novels.each do |f| %>
 						<div class= "novel-box">
@@ -21,7 +21,11 @@
 							</div>
 							作成者：<%= link_to f.user.username, user_path(f.user.id) %><br>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
+							<% if f.novel_content.exists? %>
+							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %>
+							<% else %>
 							最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %>
+							<%  end %>
 							<div class= "open">
 								参加ユーザー:<% f.novel_content.map(&:user).uniq.each do |u| %>
 							                  <%= link_to u.username, user_path(u) %>
@@ -47,7 +51,11 @@
 							</div>
 							作成者：<%= link_to f.user.username, user_path(f.user.id) %><br>
 							作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
+							<% if f.novel_content.exists? %>
+							最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %>
+							<% else %>
 							最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %>
+							<%  end %>
 							<div class= "open">
 								参加ユーザー:<% f.novel_content.map(&:user).uniq.each do |u| %>
 							                  <%= link_to u.username, user_path(u) %>

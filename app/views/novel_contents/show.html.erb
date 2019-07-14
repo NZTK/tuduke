@@ -41,13 +41,16 @@
 		<% else %>
 		×
 		<% end %>
+		<div id= 'likes_buttons_<%= @novel_content.id %>'>
+			<%= render partial: 'likes/like', locals: {novel:  @novel, novel_content:  @novel_content} %>
+		</div>
 	 	</span>
 	</div>
 	<div class= "comment">
 		<h4>コメント</h4>
 		<div id= "comments_area" >
 			<div class= "comment-index">
-			<%= render partial: "comments/index",  locals: {comments: @comments} %>
+			<%= render partial: "comments/index",  locals: {comments: @comments, novel_content: @novel_content} %>
 			</div>
 		</div>
 		<% if user_signed_in? %>

@@ -1,9 +1,9 @@
 <%= render "common/header" %>
 <div class= "body">
-	<div class= "container">
-		<div class= "show_head">
+	<div class= "show_head">
  			<h3><%= @user.username %>さんの投稿作品一覧</h3>
  		</div>
+	<div class= "container-fluid">
  		<% if @novels.blank? %>
  		<div class= "box_head">
  			<h2>投稿作品はありません</h2>
@@ -26,7 +26,7 @@
 							</div>
 						</div>
 						作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
-						最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %><br>
+						最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %><br>
 						参加ユーザー<% f.novel_content.map(&:user).uniq.each do |u| %>
 						<%= link_to u.username, user_path(u) %>
 						<% end  %>

@@ -27,5 +27,8 @@ class NovelContent < ApplicationRecord
 		# NovelContent.where("id > ?", self.id).order(id: "ASC").first
 		@next = NovelContent.where('id > @novelcontent.id  and  novel_id = @novelcontent.novel.id')
 	end
+	def liked_by?(user)
+		likes.where(user_id: user_id).exists?
+	end
 end
 

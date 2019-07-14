@@ -1,6 +1,7 @@
 <%= render "common/header" %>
 <div class= "show_head" >
 	<h3><%= @user.username %>さんの閲覧履歴</h3>
+	<h4>最大20件</h4>
 </div>
 <div class= "body">
 	<div class= "container">
@@ -24,3 +25,7 @@
 			</div>
 		</div>
 		<% end %>
+		</div>
+	</div>
+</div>
+<%= render "common/footer" %>

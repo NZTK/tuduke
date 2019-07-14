@@ -1,6 +1,7 @@
 class NovelContent < ApplicationRecord
 
 	acts_as_paranoid
+	is_impressionable counter_cache: true
 
 	belongs_to :novel
 	belongs_to :user

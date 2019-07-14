@@ -1,6 +1,7 @@
 class Novel < ApplicationRecord
 	acts_as_paranoid
-	is_impressionable counter_cathe: true
+	# is_impressionable counter_cathe: true, unique: :all
+	is_impressionable :counter_cache => true, :column_name => :impressions_count
 
 	acts_as_taggable
 

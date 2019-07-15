@@ -6,18 +6,18 @@ class NovelsController < ApplicationController
 	def index
 		if params[:tag_name]
 			puts 'tag_name'
-			@novels = Novel.page(params[:page]).tagged_with(params[:tag_name])
+			@novels = Novel.page(params[:page]).tagged_with(params[:tag_name]).order(created_at: 'desc')
 			@novel_contents = NovelContent.where(novel_id: @novels)
 			@likes = Like.where(novel_content_id: @novel_contents)
 		elsif params[:genre_id]
 			puts 'gnere_id'
-			@novels = Novel.page(params[:page]).where(genre_id: params[:genre_id])
+			@novels = Novel.page(params[:page]).where(genre_id: params[:genre_id]).order(created_at: 'desc')
 			@novel_contents = NovelContent.where(novel_id: @novels)
 			@likes = Like.where(novel_content_id: @novel_contents)
 		else
 			puts 'other'
 			@search = Novel.ransack(params[:q])
-			@search_novels = @search.result.page(params[:page])
+			@search_novels = @search.result.page(params[:page]).order(created_at: 'desc')
 			# @paginatable_array = Kaminari.paginate_array(@search_novels).page(params[:page])
 			# @novel_contents = NovelContent.where(novel_id: @search_novels)
 			# @likes = Like.where(novel_content_id: @novel_contents)
@@ -47,6 +47,13 @@ class NovelsController < ApplicationController
 	end
 
 	def destroy
+		@novel = Novel.find(params[:id])
+		if @novel.destroy
+			flash[:alert] = "#{@novel.novel_title}を削除しました"
+			redirect_to novels_user_path(@novel.user)
+		else
+			render action: "edit"
+		end
 	end
 
 	def ranking
@@ -55,9 +62,7 @@ class NovelsController < ApplicationController
 		@novel_content_most_viewed = NovelContent.order('impressions_count desc').limit(5)
 		@comment_ranks = NovelContent.find(Comment.group(:novel_content_id).order('count(novel_content_id) desc').limit(5).pluck(:novel_content_id))
 
-		@novel_genres = Novel.group(:genre_id)
-		binding.pry
-		
+
 		# binding.pry
 		# @genre_most_viewed = @novel_genre.order('impressions_count desc').limit(3)
 	end
@@ -76,7 +81,7 @@ class NovelsController < ApplicationController
 	def update
 		@novel = Novel.find(params[:id])
 		if  @novel.update(novel_params)
-			flash[:notice] = "更新しました"
+			flash[:notice] = "#{@novel.novel_title}を更新しました"
 		    redirect_to novel_path(@novel)
 		else
 			render action: "edit"

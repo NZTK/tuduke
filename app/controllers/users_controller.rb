@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@novels = Novel.where(user_id: @user.id)
+		@novels = Novel.where(user_id: @user.id).order(created_at: "desc")
 		@novel_contents = NovelContent.where(user_id: @user.id).order(created_at: "DESC")
 
 	end
@@ -47,10 +47,9 @@ class UsersController < ApplicationController
 
 	def novels
 		@user = User.find(params[:id])
-		# @novels = Novel.where(user_id: @user)
+
 		@novels = Novel.page(params[:page]).where(user_id:  @user).order(created_at: "DESC")
 
-		# @novels = Novel.where(user_id: @user)
 	end
 
 	def novel_contents
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
 end
 private
 def user_admin
-	@users =  User.all
+	@users =  User.page(params[:page])
 	if  current_user.admin  == false
 		redirect_to root_path
 	else

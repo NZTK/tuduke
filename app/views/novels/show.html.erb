@@ -1,7 +1,7 @@
 <%= render "common/header" %>
 <div class= "body">
+  <%= render "common/alert" %>
   <div class ="novel_show_container">
-    <%= render "common/alert" %>
     <div class ="index_container">
       <h2 id="novel-title"><%= @novel.novel_title %></h2>
       <h3><%= link_to @novel.user.username , user_path(@novel.user.id) %></h3>
@@ -56,5 +56,5 @@
     <% else %>
     <i>まだ投稿されていません</i><br>
     <% end %>
-
-      <%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>
+<span class= "logo"><%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %></span>
+<%= render "common/footer" %>

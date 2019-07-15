@@ -43,6 +43,7 @@
 			</div>
 			<h4><%= f.submit "変更を保存" ,class: "btn btn-primary btn-block", date:{ confirm: "更新しますか？"}%></h4>
 		<% end %>
+		<%= link_to "削除", novel_novel_content_path(@novel_content.novel_id, @novel_content), method: :delete , class: "btn btn-block btn-danger", data:{ confirm: "削除しますか？"} %>
 </div>
 </div>
 </div>

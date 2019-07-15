@@ -1,5 +1,6 @@
 <%= render "common/header" %>
 <div class= "body">
+	<%= render "common/alert" %>
 	<div class= "show_head">
  			<h3><%= @user.username %>さんの投稿作品一覧</h3>
  		</div>
@@ -10,7 +11,7 @@
  		</div>
  		<%  else %>
 		<div class= "row">
-			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-1" >
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
 				<div class= "show_novels_box">
 				<% @novels.each do |f| %>
 					<%= render partial: "novels/novel" ,locals: {f: f} %>
@@ -22,3 +23,4 @@
 		<% end %>
 	</div>
 </div>
+<%= render "common/footer" %>

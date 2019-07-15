@@ -46,7 +46,7 @@ class NovelContentsController < ApplicationController
 		@novel_content.user_id = current_user.id
 		@novel_content.novel_id = @novel.id
 		if @novel_content.save
-			flash[:notice] = "投稿しました"
+			flash[:notice] = "#{@novel.novel_title}に#{@novel_content.novel_content_title}を投稿しました"
 			redirect_to novel_path(@novel.id)
 		else
 			render action: 'new'
@@ -68,6 +68,14 @@ class NovelContentsController < ApplicationController
 	end
 
 	def destroy
+		@novel_content = NovelContent.find(params[:id])
+		@novel = Novel.find_by(id: @novel_content.novel_id)
+		if @novel_content.destroy
+			flash[:alert] = "#{@novel.novel_title}から#{@novel_content.novel_content_title}を削除しました"
+			redirect_to novel_path(@novel)
+		else
+			render action: "edit"
+		end
 	end
 end
 

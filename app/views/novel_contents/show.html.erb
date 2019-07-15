@@ -19,7 +19,7 @@
 		<%= simple_format(@novel_content.novel_content_forewords) %>
 	</div>
 	<div class ="novel-content-text">
-		<%= simple_format(@novel_content.novel_content_text ) %>
+		<%= simple_format(@novel_content.novel_content_text) %>
 	</div>
 	<div class= "novel-content-afterword">
 		<%= simple_format(@novel_content.novel_content_afterwords) %>
@@ -41,7 +41,7 @@
 		<% if @next.present? %>
 		<%= link_to "次へ", novel_novel_content_path(@novel, @next)  %>
 		<% else %>
-		×
+		<%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>
 		<% end %>
 		<div id= 'likes_buttons_<%= @novel_content.id %>'>
 			<%= render partial: 'likes/like', locals: {novel:  @novel, novel_content:  @novel_content} %>

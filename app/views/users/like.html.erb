@@ -5,26 +5,25 @@
 <div class= "body">
 	<div class= "container">
 		<div class= "row">
-		<% if @like.blank? %>
- 		<div class= "box_head">
- 			<h2>お気に入り小説はありません</h2>
+			<% if @likes.blank? %>
+			<div class= "ranking-box">
+	 		<div class= "box_head">
+	 			<h2>お気に入り小説はありません</h2>
+	 		</div>
+ 			</div>
  		</div>
  		<%  else %>
 		<div class= "row">
-			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-3 col-xs-10 col-xs-offset-1" >
-				<% @like.each do |f| %>
-					<div class= "novel-box">
-						<h3><%= link_to f.novel_content.novel_content_title, novel_novel_content_path(f.novel_content.novel.id, f.novel_content.id) %></h3>
-						作品名：<%= link_to f.novel_content.novel.novel_title ,novel_path(f.novel_content.novel.id) %><br>
-						ホストユーザー：<%= link_to f.novel_content.novel.user.username, user_path(f.novel_content.novel.user.id) %><br>
-						作成日：<%= f.novel_content.created_at.strftime('%Y/%m/%d') %>
-						最終更新日：<%= f.novel_content.updated_at.strftime('%Y/%m/%d') %>
-					</div>
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
+				<div class= "ranking-box">
+				<% @likes.each do |f| %>
+					<%= render partial: "novels/novel_content", locals: {f: f} %>
 				<% end %>
+				</div>
+				<%= paginate @likes %>
 			</div>
 		</div>
 		<% end %>
-		</div>
 	</div>
 </div>
 <%= render "common/footer" %>

@@ -1,9 +1,7 @@
 <%= render "common/header"%>
 <div class= "body">
+	<%= render "common/alert" %>
 	<div class= "container">
-		<div class= "flash">
-			<%= flash[:notice]  %>
-		</div>
 		<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
 		<% if @novel_content.errors.any? %>
 		<div id="error_explanation">
@@ -17,7 +15,7 @@
 		<% end %>
 		<h2 id= "novel-title"><%= @novel.novel_title %></h2>
 		ホストユーザー:<%= link_to @novel.user.username, user_path(@novel.user) %>
-		<h1>TUDUKI!!</h1>
+		<h1><span class="logo">TUDUKI!!</span></h1>
 		<%= form_with model: @novel_content ,url: novel_novel_contents_path, local: true  do |f| %>
 		<h3 style="color: red">*印は必須</h3>
 			<div class= "field novel-field" >
@@ -40,7 +38,7 @@
 				<%= f.text_area :novel_content_afterwords, placeholder: "後書き ~500文字" %>
 				<p id="counter-6">0文字</p>
 			</div>
-			<h4><%= f.submit "TUDUKU!!" ,class: "btn btn-primary btn-block" ,method: :post, date:{ confirm: "投稿しますか？"}%></h4>
+			<h4><span  class= "logo"><%= f.submit "TUDUKU!!" ,class: "btn btn-primary btn-block" ,method: :post, date:{ confirm: "投稿しますか？"}%></span></h4>
 		<% end %>
 </div>
 </div>

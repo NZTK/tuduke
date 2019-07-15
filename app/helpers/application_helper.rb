@@ -27,6 +27,12 @@ module ApplicationHelper
    	end
    	return sum
    end
+   def genre_ranks(genre)
+
+         @genre_ranks = Novel.where(genre_id: genre).order('impressions_count desc').limit(3)
+
+   end
+
 def resource
    @resource ||= User.new
 end

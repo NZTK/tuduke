@@ -101,8 +101,14 @@ $(document).ready(function($){
 // 	});
 // });
 
-
-
+$(function(){
+	$('#hm-btn').on('click', function(){
+		$(this).toggleClass('active');
+		$('#navcon').fadeToggle();
+		$('#navcon').toggleClass('active');
+		return false;
+	});
+});
 
 
 

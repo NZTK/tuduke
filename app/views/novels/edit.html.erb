@@ -23,13 +23,14 @@
 			<% if current_user.admin? %>
 				<div class= "field">
 					<%= f.label :novel_genre, "ジャンル" %><br>
-					<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
+
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {prompt: @novel.genre.genre_name} %>
 					<%=link_to "ジャンルを追加" , new_genre_path ,class: "btn btn-success btn-xs"%>
 				</div>
 			<% else %>
 				<div class= "field">
 					<%= f.label :novel_genre, "ジャンル" %><br>
-					<%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :genre_name), {prompt: "ジャンルを選択"} %>
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {prompt: @novel.genre.genre_name} %>
 				</div>
 			<% end %>
 			<div class= "field novel-field">
@@ -42,4 +43,10 @@
 				<p id="counter-2">0文字</p>
 			</div>
 			<h4><%= f.submit "更新" ,class: "btn btn-primary btn-block" ,date:{ confirm: "更新しますか？"}%></h4>
-		<% end %>
+			<% end %>
+			<%= link_to "削除", novel_path(@novel), method: :delete , class: "btn btn-block btn-danger", data:{ confirm: "削除しますか？"} %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "common/footer" %>

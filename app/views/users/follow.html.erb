@@ -1,1 +1,85 @@
-s
+<%= render "common/header" %>
+<div class= "show_head" >
+	<h3><%= @user.username %>さんのフォローユーザー</h3>
+</div>
+<div class= "body">
+	<div class= "container">
+		<div class= "row">
+
+			<% if @follows.blank? %>
+			<div class= "follow-box">
+	 		<div class= "box_head">
+	 			<h2>フォローしている人はいません</h2>
+	 		</div>
+ 			</div>
+ 		</div>
+ 		<%  else %>
+		<div class= "row">
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
+				<div class= "follow-box">
+
+				<% @follows.each do |f| %>
+				<h4><%= link_to f.username, user_path(f) %></h4>
+					<div class= "show_novels_box">
+					<div class= "box_head">
+						<h4>投稿小説</h4>
+					</div>
+					<% if f.novel_contents.blank? %>
+					<div class= "box_head">
+						<h2>投稿小説はありません</h2>
+					</div>
+					<%  else %>
+					<% f.novel_contents.last(1).each do |n| %>
+						<%= render partial: "novels/content" ,locals: {f: n} %>
+					<% end %>
+						<div class= "box_head">
+						<%= link_to "投稿小説一覧", novel_contents_user_path(f), class: "btn btn-primary" %>
+						</div>
+					<% end  %>
+				</div>
+				<% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+<div class= "show_head" >
+	<h3><%= @user.username %>さんのフォロワー</h3>
+</div>
+<div class= "body">
+	<div class= "container">
+		<div class= "row">
+
+			<% if @follower.blank? %>
+			<div class= "follow-box">
+	 		<div class= "box_head">
+	 			<h2>フォロワーはいません</h2>
+	 		</div>
+ 			</div>
+ 		</div>
+ 		<%  else %>
+		<div class= "row">
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
+				<div class= "follow-box">
+				<% @follower.each do |f| %>
+					<table class= "table" >
+						<thead>
+							<th>ID</th>
+							<th>ユーザーネーム</th>
+						</thead>
+						<tbody>
+						<tr>
+							<td><%= f.id %></td>
+							<td><%= link_to f.username, user_path(f) %></td>
+						</tr>
+					    </tbody>
+					</table>
+				<% end %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+<%= render "common/footer" %>

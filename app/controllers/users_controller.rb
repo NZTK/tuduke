@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 	before_action :correct_user, only: [:edit]
 	def index
 		@users = User.page(params[:page])
+
 	end
 
 	def show
@@ -38,6 +39,9 @@ class UsersController < ApplicationController
 	end
 
 	def follow
+		@user = User.find(params[:id])
+		@follows = User.page(params[:page]).find(Relationship.where(user_id: @user).pluck(:follow_id))
+		@follower = User.page(params[:page]).find(Relationship.where(follow_id: @user).pluck(:user_id))
 	end
 
 	def history
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
 end
 private
 def user_admin
-	@users =  User.page(params[:page])
+	@users =  User.page(params[:page]).with_deleted
 	if  current_user.admin  == false
 		redirect_to root_path
 	else

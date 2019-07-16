@@ -19,8 +19,11 @@
 							<td class= "col-lg-1 col-md-1 col-xs-1"><%= f.id %></td>
 							<td class= "col-lg-5 col-md-5 col-xs-5"><%= link_to f.username, user_path(f.id) %></td>
 							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "編集",  edit_user_path(f.id), class: "btn btn-primary" %></td>
-							<% if current_user.admin?  %>
+							<% unless f.deleted_at? %>
 							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "アカウント削除", f, data: { confirm: "退会させますか?" }, method: :delete , class: "btn btn-danger"%></td>
+							<% else %>
+
+							<td class= "col-lg-3 col-md-3 col-xs-3"><%= button_to "アカウント復元", f.restore , method: :get , class: "btn btn-danger"%></td>
 							<% end %>
 						</tr>
 						<% end %>

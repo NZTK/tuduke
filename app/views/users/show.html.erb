@@ -14,7 +14,7 @@
  	</div>
  	<div class= "container-fluid">
  		<div class= "row">
-	 		<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
+	 		<div class= "col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-0 col-xs-10 col-xs-offset-1 order-lg-2 col-lg-push-3 col-md-push-3" >
 	 			<div class= "show_novels_box">
 	 				<div class= "box_head">
 	 				<h4>投稿作品</h4>
@@ -49,6 +49,102 @@
 						</div>
 					<% end  %>
 				</div>
+			</div>
+			<div class= "col-lg-3  col-md-3 col-xs-10  col-lg-offset-0 col-md-offset-0 col-xs-offset-1 col-lg-pull-6 col-md-pull-6 ">
+				<div class=  "show_novels_box">
+					<div class= "box_head">
+						<h4>お気に入り小説</h4>
+					</div>
+					<% if @likes.blank? %>
+			 			<div class= "box_head">
+			 				<h2>お気に入り小説はありません</h2>
+			 			</div>
+	 				<% else %>
+						<% @likes.last(5).each do |f| %>
+							<%= render partial: "novels/novel_content", locals: {f: f} %>
+						<% end %>
+						<div class= "box_head">
+							<%= link_to "お気に入り小説一覧", like_user_path(@user), class: "btn btn-primary" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<div class= "col-lg-3  col-md-3 col-xs-10  col-lg-offset-0 col-md-offset-0 col-xs-offset-1 ">
+				<div class=  "show_novels_box">
+					<div class= "box_head">
+						<h4>閲覧履歴</h4>
+					</div>
+					<% if @history.blank? %>
+			 			<div class= "box_head">
+			 				<h2>閲覧履歴はありません</h2>
+			 			</div>
+	 				<% else %>
+						<% @history.last(3).each do |f| %>
+							<%= render partial: "novels/novel_content", locals: {f: f} %>
+						<% end %>
+						<div class= "box_head">
+							<%= link_to "閲覧履歴へ", history_user_path(@user), class: "btn btn-primary" %>
+						</div>
+					<% end %>
+				</div>
+				<div class=  "show_novels_box">
+					<% if @follows.blank? %>
+			 			<div class= "box_head">
+			 				<h5>フォローしているユーザーはいません</h5>
+			 			</div>
+	 				<% else %>
+	 				<div class= "box_head">
+						<h4>Follow</h4>
+					</div>
+		 				<table class= "table-follow">
+							<thead>
+								<th>ID</th>
+								<th>ユーザーネーム</th>
+								</thead>
+							<% @follows.last(10).each do |f| %>
+								<tbody>
+									<td><%= f.id %></td>
+									<td><%= link_to f.username, user_path(f) %></td>
+								</tbody>
+							<% end %>
+						</table>
+					<% end %>
+					<% if @follows.present? %>
+					<div class= "box_head">
+						<%= link_to "Follow一覧", follow_user_path(@user), class: "btn btn-primary" %>
+					</div>
+					<% end %>
+				</div>
+				<div class=  "show_novels_box">
+					<% if @follower.blank? %>
+						<div class= "box_head">
+				 			<h5>フォローされているユーザーはいません</h5>
+				 		</div>
+				 	<% else %>
+				 	<div class= "box_head">
+						<h4>Follower</h4>
+					</div>
+				 		<table class= "table-follow">
+						<thead>
+							<th>ID</th>
+							<th>ユーザーネーム</th>
+							</thead>
+						<% @follower.last(10).each do |f| %>
+							<tbody>
+								<td><%= f.id %></td>
+								<td><%= link_to f.username, user_path(f) %></td>
+							</tbody>
+						<% end %>
+						</table>
+					<% end %>
+					<% if @follower.present? %>
+					<div class= "box_head">
+						<%= link_to "Follow一覧", follow_user_path(@user), class: "btn btn-primary" %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
 				<div class= "user_about">
 					<table >
 						<tr>

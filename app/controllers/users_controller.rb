@@ -10,7 +10,10 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@novels = Novel.where(user_id: @user.id).order(created_at: "desc")
 		@novel_contents = NovelContent.where(user_id: @user.id).order(created_at: "DESC")
-
+		@likes = Like.where(user_id: @user.id)
+		@follows = User.find(Relationship.where(user_id: @user).order(created_at: "desc").pluck(:follow_id))
+		@follower = User.find(Relationship.where(follow_id: @user).order(created_at: "desc").pluck(:user_id))
+		@history = History.where(user_id: @user.id)
 	end
 
 	def edit
@@ -35,13 +38,13 @@ class UsersController < ApplicationController
 
 	def like
 		@user = User.find(params[:id])
-		@likes = Like.page(params[:page]).where(user_id: @user.id)
+		@likes = Like.page(params[:page]).where(user_id: @user.id).order(created_at: "DESC")
 	end
 
 	def follow
 		@user = User.find(params[:id])
-		@follows = User.page(params[:page]).find(Relationship.where(user_id: @user).pluck(:follow_id))
-		@follower = User.page(params[:page]).find(Relationship.where(follow_id: @user).pluck(:user_id))
+		@follows = User.page(params[:page]).find(Relationship.where(user_id: @user).order(created_at: "desc").pluck(:follow_id))
+		@follower = User.page(params[:page]).find(Relationship.where(follow_id: @user).order(created_at: "desc").pluck(:user_id))
 	end
 
 	def history

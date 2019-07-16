@@ -8,6 +8,7 @@
  		<div class= "box_head">
  			<h2>投稿小説はありません</h2>
  		</div>
+ 		<%= render partial: "users/mypage_link", locals: {user: @user} %>
  		<%  else %>
 		<div class= "row">
 			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
@@ -17,6 +18,7 @@
 				<% end %>
 				</div>
 				<%= paginate @novel_contents %>
+				<%= render partial: "users/mypage_link", locals: {user: @user} %>
 			</div>
 		</div>
 		<% end %>

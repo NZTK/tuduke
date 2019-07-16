@@ -7,11 +7,10 @@
 	<div class= "container">
 		<div class= "row">
 			<% if @history.blank? %>
-			<div class= "ranking-box">
 	 		<div class= "box_head">
 	 			<h2>閲覧履歴はありません</h2>
-	 		</div>
  			</div>
+ 			<%= render partial: "users/mypage_link", locals: {user: @user} %>
  		</div>
  		<%  else %>
 		<div class= "row">
@@ -21,6 +20,7 @@
 					<%= render partial: "novels/novel_content", locals: {f: f} %>
 				<% end %>
 				</div>
+				<%= render partial: "users/mypage_link", locals: {user: @user} %>
 			</div>
 		</div>
 		<% end %>

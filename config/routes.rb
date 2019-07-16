@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   		get 'ranking'
   	end
   	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy, :create]  do
-  		resources :comments
+  		resources :comments, only: [:create, :destroy]
   		resource :likes, only: [:create, :destroy]
   		resource :history, only: [:create, :destroy]
   	end
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get 'about/index'
   resources :genres, only: [:new, :create, :destroy]
   get 'tags/:tag', to: 'novels#index', as: :tag
+  resources :relationships, only: [:create, :destroy]
 
 end

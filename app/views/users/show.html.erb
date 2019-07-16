@@ -7,7 +7,9 @@
 	 		<% if current_user == @user or current_user.admin? %>
 	 		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-info" %>
 	 		<% end %>
-	 		<%= render partial: "relationships/follow_btn", locals: {user: @user} %>
+	 		<div id= "follow_btn">
+	 			<%= render partial: 'relationships/follow', locals: {user: @user} , lacal: true %>
+	 		</div>
 	 	<% end %>
  	</div>
  	<div class= "container-fluid">

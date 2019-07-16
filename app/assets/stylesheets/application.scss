@@ -35,6 +35,7 @@
 
 .row {
 	width: 100%;
+	margin: 0;
 }
 
 .clearfix::after {
@@ -539,9 +540,12 @@ input {
 	margin-bottom: 20px;
     border: double;
     background: aliceblue;
-    text-align: center;
     border-radius: 15px;
 }
+.ranking-box > h4 {
+	text-align: center;
+}
+
 .navlogo {
 	font-family: 'SINGLE FIGHTER';
 }
@@ -614,6 +618,41 @@ input {
 	font-family: 'SINGLE FIGHTER';
 }
 
+.table-follow {
+	background-color: white;
+	border: solid 1px;
+	width: 90%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.table-follow > thead > tr > th {
+	border: 1px solid black;
+	padding-left: 5px;
+}
+
+.table-follow > tbody {
+	border: 1px solid black;
+}
+
+.table-follow > tbody > tr {
+	border: 1px solid black;
+}
+
+.table-follow > tbody > tr > td {
+	border: 1px solid black;
+	padding-left: 5px;
+}
+#follow_btn {
+	margin-top: 5px;
+}
+
+.non_content {
+	text-align: center;
+}
+.actions {
+	margin-bottom: 5px;
+}
 @media screen and (min-width: 768px){
     .navbar-collapse.collapse{
         -webkit-transform: translateX(0%);

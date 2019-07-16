@@ -6,11 +6,10 @@
 	<div class= "container">
 		<div class= "row">
 			<% if @likes.blank? %>
-			<div class= "ranking-box">
 	 		<div class= "box_head">
 	 			<h2>お気に入り小説はありません</h2>
 	 		</div>
- 			</div>
+ 			<%= render partial: "users/mypage_link", locals: {user: @user} %>
  		</div>
  		<%  else %>
 		<div class= "row">
@@ -21,6 +20,7 @@
 				<% end %>
 				</div>
 				<%= paginate @likes %>
+				<%= render partial: "users/mypage_link", locals: {user: @user} %>
 			</div>
 		</div>
 		<% end %>

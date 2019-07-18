@@ -4,8 +4,8 @@
 	作品名：<%= link_to f.novel.novel_title, novel_path(f.novel_id) %><br>
 	投稿者：<%= link_to f.user.username , user_path(f.user.id)%><br>
 	ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %><br>
-	投稿日:<%= f.created_at.strftime('%Y/%m/%d') %>
-	最終更新日:<%= f.updated_at.strftime('%Y/%m/%d') %>
+	投稿日:<%= f.created_at.strftime('%Y/%m/%d/%H:%M') %>
+	最終更新日:<%= f.updated_at.strftime('%Y/%m/%d/%H:%M') %>
 	<br>
 	<i class="far fa-comment-dots"></i><%= f.comments.count %>
 	<i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %>

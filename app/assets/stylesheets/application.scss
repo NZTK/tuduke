@@ -116,11 +116,17 @@ input {
 	margin: 5px;
 	border-color: #007bff;
 }
+.tag:hover {
+	background-color: red;
+	border-color: red;
+}
 .tag > a {
 	color: white;
 }
-.tag > a:hover{
-	color: black;
+
+
+.tag > i {
+	color: white;
 }
 
 .novel-about > p{
@@ -511,8 +517,6 @@ input {
 	color: white;
     background: limegreen;
     line-height: 3;
-    width: 100px;
-    width: 20%;
     border-radius: 10px;
     font-size: 18px;
 }
@@ -653,6 +657,20 @@ input {
 .actions {
 	margin-bottom: 5px;
 }
+
+.tag_cloud {
+	border: solid 1px;
+    border-radius: 18px;
+    padding: 10px;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.tag_cloud_head {
+	text-align: center;
+	font-family: '凸版文久見出しゴシック';
+}
+
 @media screen and (min-width: 768px){
     .navbar-collapse.collapse{
         -webkit-transform: translateX(0%);

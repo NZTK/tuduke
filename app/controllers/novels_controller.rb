@@ -1,6 +1,7 @@
 class NovelsController < ApplicationController
 	before_action :authenticate_user! ,only: [:edit, :new]
 	before_action :correct_user ,only: [:edit]
+	before_action :user_admin ,only: [:novels_admin_index]
 
 
 	def index
@@ -9,15 +10,21 @@ class NovelsController < ApplicationController
 			@novels = Novel.page(params[:page]).tagged_with(params[:tag_name]).order(created_at: 'desc')
 			@novel_contents = NovelContent.where(novel_id: @novels)
 			@likes = Like.where(novel_content_id: @novel_contents)
+			@tags = Novel.all_tags.order('taggings_count desc')
+			@novel_con = NovelContent.all.order(created_at: 'desc')
 		elsif params[:genre_id]
 			puts 'gnere_id'
 			@novels = Novel.page(params[:page]).where(genre_id: params[:genre_id]).order(created_at: 'desc')
 			@novel_contents = NovelContent.where(novel_id: @novels)
 			@likes = Like.where(novel_content_id: @novel_contents)
+			@tags = Novel.all_tags.order('taggings_count desc')
+			@novel_con = NovelContent.all.order(created_at: 'desc')
 		else
 			puts 'other'
 			@search = Novel.ransack(params[:q])
 			@search_novels = @search.result.page(params[:page]).order(created_at: 'desc')
+			@tags = Novel.all_tags.order('taggings_count desc')
+			@novel_con = NovelContent.all.order(created_at: 'desc')
 			# @paginatable_array = Kaminari.paginate_array(@search_novels).page(params[:page])
 			# @novel_contents = NovelContent.where(novel_id: @search_novels)
 			# @likes = Like.where(novel_content_id: @novel_contents)
@@ -56,6 +63,10 @@ class NovelsController < ApplicationController
 		end
 	end
 
+	def  novels_admin_index
+		@novels = Novel.page(params[:page]).without_deleted
+	end
+
 	def ranking
 		@like_ranks = NovelContent.find(Like.group(:novel_content_id).order('count(novel_content_id) desc').limit(5).pluck(:novel_content_id))
 		@novel_most_viewed = Novel.order('impressions_count desc').limit(3)
@@ -88,10 +99,27 @@ class NovelsController < ApplicationController
 		end
 	end
 
+	def novel_restore
+
+		@novel = Novel.only_deleted.find(params[:id]).restore
+		flash[:notice] = "#{@novel.novel_title}を復元しました"
+		redirect_to novels_admin_index_novels_path
+	end
+
+
 	private
 	def novel_params
 		params.require(:novel).permit(:novel_title, :novel_about, :tag_list, :genre_id)
 	end
+
+	def user_admin
+	@novels =  Novel.page(params[:page]).with_deleted
+	if  current_user.admin  == false
+		redirect_to root_path
+	else
+		render :novels_admin_index
+	end
+end
 
 	def correct_user
 		@novel = Novel.find(params[:id])

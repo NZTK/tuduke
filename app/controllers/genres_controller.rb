@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-
+  before_action :user_admin
   def new
   	@genre = Genre.new
   	@genres = Genre.page(params[:page])
@@ -24,6 +24,15 @@ class GenresController < ApplicationController
   private
   def genre_params
   	params.require(:genre).permit(:genre_name)
-
   end
+
+  def user_admin
+    @genre = Genre.new
+   @genres =  Genre.page(params[:page])
+   if  current_user.admin  == false
+       redirect_to root_path
+   else
+     render :new
+   end
+end
 end

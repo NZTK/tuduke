@@ -1,6 +1,11 @@
 class NovelContentsController < ApplicationController
 	before_action :authenticate_user! ,only: [:edit, :new]
 	before_action :correct_user ,only: [:edit]
+	before_action :user_admin ,only: [:index]
+
+	def index
+	end
+
 	def new
 		@novel_content = NovelContent.new
 		@novel = Novel.find_by(id: params[:novel_id])
@@ -77,17 +82,34 @@ class NovelContentsController < ApplicationController
 			render action: "edit"
 		end
 	end
-end
 
-private
-def novel_content_params
-	params.require(:novel_content).permit(:novel_content_title, :novel_content_text, :novel_content_forewords, :novel_content_afterwords)
-end
-def correct_user
-		@novel_content= NovelContent.find(params[:id])
-		if current_user.admin  || current_user.id == @novel_content.user_id
-		   	render action:  "edit"
+	def novel_content_restore
+		@novel_content = NovelContent.only_deleted.find(params[:id]).restore
+
+		@novel  = Novel.find_by(id: @novel_content.novel)
+		flash[:notice] = "#{@novel.novel_title}に#{@novel_content.novel_content_title}を復元しました"
+		redirect_to novel_contents_index_path
+	end
+
+	private
+	def novel_content_params
+		params.require(:novel_content).permit(:novel_content_title, :novel_content_text, :novel_content_forewords, :novel_content_afterwords)
+	end
+	def correct_user
+			@novel_content= NovelContent.find(params[:id])
+			if current_user.admin  || current_user.id == @novel_content.user_id
+			   	render action:  "edit"
+			else
+			   	redirect_to new_user_registration_path
+			end
+	end
+	def user_admin
+
+		@novel_contents =  NovelContent.page(params[:page]).with_deleted
+		if  current_user.admin  == false
+			redirect_to root_path
 		else
-		   	redirect_to new_user_registration_path
+			render :index
 		end
 	end
+end

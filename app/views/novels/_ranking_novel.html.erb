@@ -13,11 +13,11 @@
 		</div>
 	</div>
 	作成者：<%= link_to f.user.username, user_path(f.user.id) %><br>
-	作成日：<%= f.created_at.strftime('%Y/%m/%d') %>
+	作成日：<%= f.created_at.strftime('%Y/%m/%d/%H:%M') %>
 	<% if f.novel_content.exists? %>
-	最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d') %>
+	最終更新日：<%= f.novel_content.last.updated_at.strftime('%Y/%m/%d/%H:%M') %>
 	<% else %>
-	最終更新日：<%= f.updated_at.strftime('%Y/%m/%d') %>
+	最終更新日：<%= f.updated_at.strftime('%Y/%m/%d/%H:%M') %>
 	<%  end %>
 	<div class= "open">
 		参加ユーザー

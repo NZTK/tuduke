@@ -65,6 +65,11 @@ class UsersController < ApplicationController
 
 	end
 
+	def user_restore
+		@user = User.only_deleted.find(params[:id]).restore
+		flash[:notice] = "#{@user.username}を復元しました"
+		redirect_to users_path
+	end
 end
 private
 def user_admin

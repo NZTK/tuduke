@@ -1,5 +1,6 @@
 <%= render "common/header" %>
 <div class=body>
+	<%= render "common/alert" %>
 	<div  class="container">
 		<div class= "row">
 			<div  class= "col-lg-10 col-offset-1 col-md-10 col-md-offset-1 col-xs-12">
@@ -16,14 +17,16 @@
 					<tbody>
 						<% @users.each do |f| %>
 						<tr>
+							<% unless f.deleted_at? %>
 							<td class= "col-lg-1 col-md-1 col-xs-1"><%= f.id %></td>
 							<td class= "col-lg-5 col-md-5 col-xs-5"><%= link_to f.username, user_path(f.id) %></td>
 							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "編集",  edit_user_path(f.id), class: "btn btn-primary" %></td>
-							<% unless f.deleted_at? %>
 							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "アカウント削除", f, data: { confirm: "退会させますか?" }, method: :delete , class: "btn btn-danger"%></td>
 							<% else %>
-
-							<td class= "col-lg-3 col-md-3 col-xs-3"><%= button_to "アカウント復元", f.restore , method: :get , class: "btn btn-danger"%></td>
+							<td class= "col-lg-1 col-md-1 col-xs-1"><%= f.id %></td>
+							<td class= "col-lg-5 col-md-5 col-xs-5"><%= f.username %></td>
+							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "編集",  edit_user_path(f.id), class: "btn btn-primary disabled" %></td>
+							<td class= "col-lg-3 col-md-3 col-xs-3"><%= link_to "アカウント復元",user_restore_user_path(f), method: :patch  , class: "btn btn-success"%></td>
 							<% end %>
 						</tr>
 						<% end %>

@@ -1,0 +1,33 @@
+<div class= "col-lg-3 col-md-3 col-xs-10 col-lg-offset-0 col-md-offset-0 col-xs-offset-1  col-lg-pull-6 col-md-pull-6">
+	<div class= "new_content">
+		<div class= "tag_cloud_head">
+		  <h2>新着小説</h2>
+	    </div>
+        <% novel_con.first(5).each do |f| %>
+        <div class= "novel-box-show">
+			<h3><%= link_to f.novel_content_title, novel_novel_content_path(f.novel.id, f) %></h3>
+				作品名：<%= link_to f.novel.novel_title ,novel_path(f.novel.id) %><br>
+				投稿者：<%= link_to f.user.username , user_path(f.user.id)%><br>
+				ホストユーザー：<%= link_to f.novel.user.username, user_path(f.novel.user.id) %><br>
+				投稿日：<%= f.created_at.strftime('%Y/%m/%d/%H:%M') %>
+				<br>
+				<i class="far fa-comment-dots"></i><%= f.comments.count %>
+				<i class="fas fa-heart" , style="color: red;"></i><%= f.likes.count %>
+				<i class="fas fa-eye"></i><%= f.impressions_count %>
+		</div>
+        <% end %>
+    </div>
+</div>
+<div class= "col-lg-3 col-md-3 col-xs-10 col-lg-offset-0 col-md-offset-0 col-xs-offset-1">
+	<div class= "tag_cloud_head">
+		<h2>タグクラウド</h2>
+	</div>
+	<div class= "tag_cloud">
+        <% tags.each do |tag| %>
+          <button class="tag">
+          <%= link_to tag, novels_path(tag_name: tag.name) %>
+          <i>(<%= tag.taggings_count %>)</i>
+          </button>
+        <% end %>
+    </div>
+</div>

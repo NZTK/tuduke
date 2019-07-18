@@ -10,20 +10,29 @@ Rails.application.routes.draw do
   		get 'follow'
       get 'novels'
       get 'novel_contents'
+      patch 'user_restore'
   	end
   end
   resources :novels do
   	collection do
   		get 'ranking'
+      get 'novels_admin_index'
+    end
+    member do
+      patch 'novel_restore'
   	end
   	resources :novel_contents, only: [:show, :new, :edit, :update, :destroy, :create]  do
   		resources :comments, only: [:create, :destroy]
   		resource :likes, only: [:create, :destroy]
   		resource :history, only: [:create, :destroy]
-  	end
+        member do
+          patch 'novel_content_restore'
+  	     end
+    end
   end
   root 'novels#index'
   get 'about/index'
+  get 'novel_contents/index'
   resources :genres, only: [:new, :create, :destroy]
   get 'tags/:tag', to: 'novels#index', as: :tag
   resources :relationships, only: [:create, :destroy]

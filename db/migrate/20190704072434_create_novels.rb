@@ -7,9 +7,6 @@ class CreateNovels < ActiveRecord::Migration[5.2]
       t.text :novel_about
       t.integer  :impressions_count, default: 0
       t.datetime :deleted_at
-
-
-
     end
   end
 end

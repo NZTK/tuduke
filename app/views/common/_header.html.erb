@@ -24,7 +24,7 @@
 
       <% if user = signed_in? %>
         <div class= "navbar-collapse collapse" id="navcon" >
-        <ul class= "nav navbar-nav navbar-right">
+        <ul class= "nav navbar-nav navbar-right" id= "connav">
           <ul id="dropdwn">
             <li class= "nav-con-link"><%= link_to ranking_novels_path, class: "fas fa-crown" do %>
               ランキング

@@ -591,20 +591,20 @@ input {
     margin-bottom: 6px;
 }
 
-.navbar-collapse.collapse{
+/*.navbar-collapse.collapse{
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
 
     position: absolute;
     right: 5% !important;
-}
+}*/
 
-.navbar-collapse.collapse.active {
+/*.navbar-collapse.collapse.active {
     -webkit-transform:translateX(0);
     transform:translateX(0);
     overflow-y: auto;
     position: inherit;
-}
+}*/
 
 .navbar-collapse.collapse.active #dropdwn{
 	display: inline;

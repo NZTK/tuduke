@@ -6,7 +6,7 @@
 		<div id="error_explanation">
 			<ul>
 				<h3><%= @novel.errors.count %>件のエラーです</h3>
-				<%= @novel.errors.full_messages.each do |message| %>
+				<% @novel.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
 				<% end %>
 			</ul>
@@ -15,7 +15,7 @@
 		<h1>新規作成</h1>
 		<%= form_with model: @novel, local: true do |f| %>
 			<div class= "field novel-field" >
-				<%= f.label :novel_title, "作品名 =50文字" %>
+				<%= f.label :novel_title, "作品名 ~50文字" %>
 				<%= f.text_field :novel_title, placeholder: "作品名を入力　~50文字" %>
 				<p id="counter-1">0文字</p>
 			</div>

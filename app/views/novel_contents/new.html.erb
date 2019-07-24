@@ -7,7 +7,7 @@
 		<div id="error_explanation">
 			<ul>
 				<h3><%= @novel_content.errors.count %>件のエラーです</h3>
-				<%= @novel_content.errors.full_messages.each do |message| %>
+				<% @novel_content.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
 				<% end %>
 			</ul>
@@ -19,7 +19,7 @@
 		<%= form_with model: @novel_content ,url: novel_novel_contents_path, local: true  do |f| %>
 		<h3 style="color: red">*印は必須</h3>
 			<div class= "field novel-field" >
-				<%= f.label :novel_content_title, "タイトル　~500文字" %><i style="color: red">*</i>
+				<%= f.label :novel_content_title, "タイトル　~50文字" %><i style="color: red">*</i>
 				<%= f.text_field :novel_content_title, placeholder: "タイトルを入力　~50文字" %>
 				<p id="counter-3">0文字</p>
 			</div>

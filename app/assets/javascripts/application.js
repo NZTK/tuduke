@@ -70,8 +70,23 @@ $(function(){
 
 $(function(){
 	$('#hm-btn').on('click', function(){
-		$('#navcon').addClass('active');
-		$('#navcon').slideToggle();
+		if($('#navcon').hasClass('active')){
+			$.when(
+				// $('#navcon').slideUp(),
+				// $(".1st").slideUp(),
+				// $(".2st").slideUp()
+				$('#navcon').slideUp()
+				).done(function(){
+				$('#navcon').removeClass('active');
+				$(".1st").slideUp();
+				$(".2nd").slideUp();
+				// $('#navcon').slideUp();
+			});
+		}else{
+				$('#navcon').addClass('active');
+				$('#navcon').slideDown();
+		}
+		// $('#navcon').slideToggle();
 		// $('#navcon').toggleClass('active');
 	});
 });

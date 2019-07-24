@@ -5,5 +5,4 @@ class GenresControllerTest < ActionDispatch::IntegrationTest
     get new_genre_url
     assert_response :success
   end
-
 end

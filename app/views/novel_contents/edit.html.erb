@@ -9,7 +9,7 @@
 		<div id="error_explanation">
 			<ul>
 				<h3><%= @novel_content.errors.count %>件のエラーです</h3>
-				<%= @novel_content.errors.full_messages.each do |message| %>
+				<% @novel_content.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
 				<% end %>
 			</ul>

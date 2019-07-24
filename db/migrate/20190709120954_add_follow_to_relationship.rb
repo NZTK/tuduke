@@ -1,5 +1,5 @@
 class AddFollowToRelationship < ActiveRecord::Migration[5.2]
   def change
-  	drop_table  :relationships
+    drop_table :relationships
   end
 end

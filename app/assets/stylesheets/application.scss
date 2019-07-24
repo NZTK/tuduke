@@ -377,25 +377,28 @@ input {
 }
 .novel-content-foreword {
 	text-align: left;
-    margin: auto 100px;
+	width: 90%;
+    margin: auto ;
     border-bottom: solid 1px;
     word-break: break-word;
 }
 
 .novel-content-text {
-	margin: 20px 100px 20px 100px;
+	margin: auto;
+	width: 90%;
 	word-break: break-all;
 }
 
 .novel-content-afterword {
 	text-align: left;
-    margin: auto 100px;
+    margin: auto;
+    width: 90%;
     border-top: solid 1px;
     word-break: break-word;
 }
 .novel-content-botton {
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
 }
 .page {
     margin: 0 3px;
@@ -502,7 +505,7 @@ input {
 }
 
 .comment{
-	width: 50%;
+	width: 90%;
     margin: auto;
     border: double;
     padding: 6px;

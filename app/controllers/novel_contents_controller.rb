@@ -1,6 +1,6 @@
 class NovelContentsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :new]
-  before_action :correct_user, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :new, :destroy]
+  before_action :correct_user, only: [:edit, :destroy]
   before_action :user_admin, only: [:index]
 
   def index
@@ -101,7 +101,8 @@ class NovelContentsController < ApplicationController
     if current_user.admin || current_user.id == @novel_content.user_id
       render action: "edit"
     else
-      redirect_to new_user_registration_path
+      flash[:alert] = "権限がありません"
+      redirect_to novel_novel_content_path(@novel_content.novel, @novel_content)
     end
   end
 

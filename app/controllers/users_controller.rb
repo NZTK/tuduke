@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :user_admin, only: [:index]
+  before_action :authenticate_user!, only: [:edit, :history]
   before_action :correct_user, only: [:edit]
+  before_action :user_history, only: [:history]
   def index
     @users = User.page(params[:page])
   end
@@ -88,7 +90,7 @@ def correct_user
     render :edit
   else
     flash[:alert] = "権限がありません"
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
   # if current_user.admin
   #      render :edit
@@ -97,4 +99,16 @@ def correct_user
   # else
   #   render :edit
   # end
+end
+
+def user_history
+  @user = User.find(params[:id])
+  @history = History.where(user_id: @user.id)
+  if current_user.admin || current_user == @user
+    render :history
+  else
+    flash[:alert] = "権限がありません"
+    redirect_to user_path(@user)
+  end
+
 end

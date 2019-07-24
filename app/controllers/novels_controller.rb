@@ -1,6 +1,6 @@
 class NovelsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :new]
-  before_action :correct_user, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :new, :destroy]
+  before_action :correct_user, only: [:edit, :destroy]
   before_action :user_admin, only: [:novels_admin_index]
 
   def index
@@ -11,6 +11,7 @@ class NovelsController < ApplicationController
       @likes = Like.where(novel_content_id: @novel_contents)
       @tags = Novel.all_tags.order('taggings_count desc')
       @novel_con = NovelContent.all.order(created_at: 'desc')
+      @tag = @tags.find_by(name: params[:tag_name])
     elsif params[:genre_id]
       puts 'gnere_id'
       @novels = Novel.page(params[:page]).where(genre_id: params[:genre_id]).order(created_at: 'desc')
@@ -18,6 +19,7 @@ class NovelsController < ApplicationController
       @likes = Like.where(novel_content_id: @novel_contents)
       @tags = Novel.all_tags.order('taggings_count desc')
       @novel_con = NovelContent.all.order(created_at: 'desc')
+      @genre = Genre.find_by(id: params[:genre_id])
     else
       puts 'other'
       @search = Novel.ransack(params[:q])
@@ -122,7 +124,7 @@ class NovelsController < ApplicationController
       render :edit
     else
       flash[:alert] = "権限がありません"
-      redirect_to root_path
+      redirect_to novel_path(@novel)
     end
   end
 end

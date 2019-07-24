@@ -21,7 +21,6 @@ FactoryBot.define do
       username { Faker::Lorem.characters(2) }
     end
 
-
     trait :create_with_novels do
       after(:create) do |user|
         create_list(:novel, 3, user: user, genre_id: 1)
@@ -30,7 +29,7 @@ FactoryBot.define do
 
     trait :create_with_novel_contents do
       after(:create) do |user|
-        create_list(:novel_content, 3, user: user)
+        create_list(:novel_content, 3, user: user, novel_id: 1)
       end
     end
   end

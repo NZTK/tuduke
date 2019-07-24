@@ -97,6 +97,11 @@
       <div class= "navbar-collapse collapse" id="navcon" >
         <ul class= "nav navbar-nav navbar-right ">
           <ul id="dropdwn">
+            <li class= "nav-con-link">
+              <%= link_to  about_index_path do %>
+                初めての方へ
+              <% end %>
+            </li>
             <li class= "nav-con-link"><%= link_to ranking_novels_path, class: "fas fa-crown" do %>
               ランキング
               <% end %>

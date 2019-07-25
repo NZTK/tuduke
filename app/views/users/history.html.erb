@@ -1,0 +1,29 @@
+<%= render "common/header" %>
+<div class= "show_head" >
+	<h3><%= @user.username %>さんの閲覧履歴</h3>
+	<h4>最大20件</h4>
+</div>
+<div class= "body">
+	<div class= "container">
+		<div class= "row">
+			<% if @history.blank? %>
+	 		<div class= "box_head">
+	 			<h2>閲覧履歴はありません</h2>
+ 			</div>
+ 			<%= render partial: "users/mypage_link", locals: {user: @user} %>
+ 		</div>
+ 		<%  else %>
+		<div class= "row">
+			<div class= "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" >
+				<div class= "ranking-box">
+				<% @history.each do |f| %>
+					<%= render partial: "novels/novel_content", locals: {f: f} %>
+				<% end %>
+				</div>
+				<%= render partial: "users/mypage_link", locals: {user: @user} %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+<%= render "common/footer" %>

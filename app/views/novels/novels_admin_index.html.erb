@@ -1,0 +1,59 @@
+<%= render "common/header" %>
+<div class=body>
+	<%= render "common/alert" %>
+	<div  class="container">
+		<div class= "row">
+			<div  class= "col-lg-10 col-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+			    <div class= "table-responsive">
+				<table class= "table table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>タイトル</th>
+							<th>投稿者</th>
+							<th>話数</th>
+							<th>編集</th>
+							<th>削除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @novels.each do |f| %>
+						<tr>
+							<td><%= f.id %></td>
+								<% unless f.deleted_at? %>
+									<td><%= link_to f.novel_title, novel_path(f) %></td>
+									<% if f.user.deleted_at? %>
+										<td><%= f.user.username %>退会済み</td>
+										<td><%= f.novel_content.count %></td>
+										<td><%= link_to "編集",  edit_novel_path(f), class: "btn btn-primary disabled" %></td>
+									<% else  %>
+										<td><%= link_to f.user.username, user_path(f.user.id) %></td>
+										<td><%= f.novel_content.count %></td>
+										<td><%= link_to "編集",  edit_novel_path(f), class: "btn btn-primary" %></td>
+									<% end %>
+										<td><%= button_to "削除", novel_path(f), method: :delete , class: "btn btn-danger", data:{ confirm: "削除しますか？"} %></td>
+								<% else  %>
+									<td><%= f.novel_title %></td>
+									<% if f.user.deleted_at? %>
+										<td><%= f.user.username %></td>
+										<td><%= f.novel_content.count %></td>
+										<td><%= link_to "編集",  edit_novel_path(f), class: "btn btn-primary disabled" %></td>
+										<td><%= link_to "復元",novel_restore_novel_path(f), method: :get , class: "btn btn-success disabled"%></td>
+									<% else  %>
+										<td><%= link_to f.user.username, user_path(f.user.id) %></td>
+										<td><%= f.novel_content.count %></td>
+										<td><%= link_to "編集",  edit_novel_path(f), class: "btn btn-primary disabled" %></td>
+										<td><%= link_to "復元",novel_restore_novel_path(f), method: :patch , class: "btn btn-success"%></td>
+									<% end %>
+								<% end %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+				<%= paginate @novels %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "common/footer"  %>

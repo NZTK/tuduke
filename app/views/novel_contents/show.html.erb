@@ -1,0 +1,64 @@
+<%= render "common/header" %>
+<div class= "body">
+	<%= render "common/alert" %>
+	<div class= "novel_content_head">
+		<%= link_to @novel.novel_title, novel_path(@novel) %>
+		/
+		<%= link_to @novel.user.username, user_path(@novel.user.id) %>
+	</div>
+	<div class= "novel-content-title">
+		<h2><%= @novel_content.novel_content_title %></h2>
+		<h4><%= link_to @novel_content.user.username, user_path(@novel_content.user.id) %></h4>
+		<% if user_signed_in? %>
+		    <% if current_user.id == @novel_content.user_id || current_user.admin? %>
+	        <%= link_to "編集", edit_novel_novel_content_path(@novel_content.novel.id, @novel_content.id) , class: "btn btn-info"%>
+       		<% end %>
+       	<% end %>
+    </div>
+	<div class= "novel-content-foreword">
+		<%= simple_format(@novel_content.novel_content_forewords) %>
+	</div>
+	<div class ="novel-content-text">
+		<%= simple_format(@novel_content.novel_content_text) %>
+	</div>
+	<div class= "novel-content-afterword">
+		<%= simple_format(@novel_content.novel_content_afterwords) %>
+	</div>
+	<div class= "novel-content-botton">
+
+		<% if @prev.present? %>
+		<%= link_to "前へ",novel_novel_content_path(@novel, @prev) %>
+		<% else %>
+		×
+		<% end %>
+		</span>
+		|
+		<span class= "botton-btn">
+		<%= link_to "目次", novel_path(@novel) %>
+		</span>
+		|
+		<span class= "botton-btn">
+		<% if @next.present? %>
+		<%= link_to "次へ", novel_novel_content_path(@novel, @next)  %>
+		<% else %>
+		<%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>
+		<% end %>
+		<div id= 'likes_buttons_<%= @novel_content.id %>'>
+			<%= render partial: 'likes/like', locals: {novel:  @novel, novel_content:  @novel_content} %>
+		</div>
+	 	</span>
+	</div>
+	<div class= "comment">
+		<h4>コメント</h4>
+		<div id= "comments_area" >
+			<div class= "comment-index">
+			<%= render partial: "comments/index",  locals: {comments: @comments, novel_content: @novel_content} %>
+			</div>
+		</div>
+		<% if user_signed_in? %>
+		<%= render partial: "comments/form", locals: {comment: @comment, novel_content: @novel_content, novel: @novel} %>
+		<% end %>
+	</div>
+</div>
+<%= render "common/footer" %>
+

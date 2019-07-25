@@ -1,0 +1,14 @@
+<div class= "novel-box-show">
+	<h3><%= link_to f.novel_content.novel_content_title, novel_novel_content_path(f.novel_content.novel.id, f.novel_content.id) %></h3>
+	作品名：<%= link_to f.novel_content.novel.novel_title ,novel_path(f.novel_content.novel.id) %><br>
+	投稿者：<%= link_to f.novel_content.user.username , user_path(f.novel_content.user.id)%><br>
+	ホストユーザー：<%= link_to f.novel_content.novel.user.username, user_path(f.novel_content.novel.user.id) %><br>
+	投稿日：<%= f.novel_content.created_at.strftime('%Y/%m/%d/%H:%M') %>
+	<br>
+	最終更新日：<%= f.novel_content.updated_at.strftime('%Y/%m/%d/%H:%M') %>
+	<br>
+	<i class="far fa-comment-dots"></i><%= f.novel_content.comments.count %>
+	<i class="fas fa-heart" , style="color: red;"></i><%= f.novel_content.likes.count %>
+	<i class="fas fa-eye"></i><%= f.novel_content.impressions_count %>
+</div>
+

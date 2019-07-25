@@ -1,0 +1,2 @@
+module NovelContentsHelper
+end

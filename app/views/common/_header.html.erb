@@ -1,0 +1,135 @@
+<header class= "header">
+  <nav class= "navbar navbar-inverse">
+    <div class= "container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"  id= "hm-btn">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href= "/" class= "navbar-brand">
+        <span class= "navlogo">
+          TUDUKE!!
+        </span>
+      </a>
+      <nav class= "navbar-right navbar-con">
+          <%= search_form_for @search, url: novels_path do |f| %>
+          <%= f.text_field :novel_title_cont, placeholder: "タイトルを検索" %>
+          <%= f.submit "検索" , class: "btn btn-default btn-xs" %>
+        <% end %>
+      </nav>
+    </div>
+
+
+      <% if user = signed_in? %>
+        <div class= "navbar-collapse collapse" id="navcon" >
+        <ul class= "nav navbar-nav navbar-right" id= "connav">
+          <ul id="dropdwn">
+            <li class= "nav-con-link"><%= link_to ranking_novels_path, class: "fas fa-crown" do %>
+              ランキング
+              <% end %>
+            </li>
+            <li class="dropdwn_btn-1"><i class="fas fa-folder-open" >ジャンル</i>
+               <ul class="dropdwn_menu 1st">
+                  <li><% @genres.each do |g| %>
+                    <table>
+                      <%= link_to g.genre_name ,novels_path(genre_id: g.id) %>
+                    </table>
+                  <% end %>
+                </li>
+                </ul>
+            </li>
+            <li class="nav-con-link"><%= link_to new_novel_path, class: "fas fa-plus" do %>
+              新規投稿
+              <% end %>
+            </li>
+            <li class="dropdwn_btn-2"><i class="fas fa-user"><%= "#{current_user.username}" %></i>
+              <ul class="dropdwn_menu 2nd">
+                <li><%= link_to user_path(current_user.id), class: "fas fa-user" do %>
+                      マイページ
+                    <% end %>
+                </li>
+                <li><%= link_to like_user_path(current_user.id) , class: "fas fa-heart" do %>
+                      Like
+                    <% end %>
+                </li>
+                <li><%= link_to history_user_path(current_user.id), class: "fas fa-history" do %>
+                      閲覧履歴
+                    <% end %>
+                </li>
+                <li><%= link_to follow_user_path(current_user.id), class: "fas fa-users" do %>
+                      Follow
+                    <% end %>
+                </li>
+                <li><%= link_to novels_user_path(current_user.id),  class: "fas fa-book" do %>
+                    投稿作品一覧
+                    <% end %>
+                </li>
+                <li><%= link_to novel_contents_user_path(current_user.id), class: "fas fa-book-open" do %>
+                    投稿小説一覧
+                    <% end  %>
+                </li>
+                <% if current_user.admin? %>
+                  <li><%= link_to users_path , class: "fas fa-users" do %>
+                  会員一覧
+                  <% end %>
+                  </li>
+                  <li><%= link_to novel_contents_index_path, class: "fas fa-book-reader" do %>
+                    投稿一覧
+                    <% end %>
+                  </li>
+                  <li><%= link_to novels_admin_index_novels_path, class: "fas fa-book-reader" do %>
+                    小説一覧
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+            <li class= "nav-con-link"><%= link_to destroy_user_session_path, class: "fas fa-sign-out-alt", method: :delete do %>
+              ログアウト
+              <% end %>
+            </li>
+          </ul>
+        </ul>
+      </div>
+    <% else %>
+      <div class= "navbar-collapse collapse" id="navcon" >
+        <ul class= "nav navbar-nav navbar-right ">
+          <ul id="dropdwn">
+            <li class= "nav-con-link">
+              <%= link_to  about_index_path do %>
+                初めての方へ
+              <% end %>
+            </li>
+            <li class= "nav-con-link"><%= link_to ranking_novels_path, class: "fas fa-crown" do %>
+              ランキング
+              <% end %>
+            </li>
+            <li class="dropdwn_btn-1"><i class="fas fa-folder-open" >ジャンル</i>
+               <ul class="dropdwn_menu 1st">
+                  <li><% @genres.each do |g| %>
+                    <table>
+                      <%= link_to g.genre_name ,novels_path(genre_id: g.id) %>
+                    </table>
+                  <% end %>
+                </li>
+                </ul>
+            </li>
+            <li class= "nav-con-link">
+              <%= link_to new_user_session_path ,class: "fas fa-sign-in-alt" do %>
+                ログイン
+              <% end %>
+            </li>
+            <li class= "nav-con-link">
+              <%= link_to new_user_registration_path,  class: "fas fa-user-plus" do %>
+                新規登録
+              <% end %>
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <% end %>
+  </div>
+</nav>
+</header>

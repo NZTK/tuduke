@@ -1,0 +1,43 @@
+
+  <div class= "body" >
+    <div class ="container">
+      <div class ="row">
+        <div class = "col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12" >
+          <div class ="devise_container">
+            <h2>Sign up</h2>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class ="field devise_field">
+                <%= f.text_field :username, autofocus: true, autocomplete: "username" , placeholder: "\uF304 ユーザーネーム" ,class: "fa" %>
+              </div>
+
+              <div class="field devise_field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "\uF0e0 メールアドレス" , class: "fa"%>
+              </div>
+
+              <div class="field devise_field">
+
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: "\uF023 パスワード　#{@minimum_password_length}文字以上", class: "fa" %>
+              </div>
+
+              <div class="field devise_field">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password" , placeholder: "\uF023 パスワード確認", class: "fa" %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" %>
+              </div>
+            <% end %>
+              <div class ="action_btn">
+                <%= button_to "Log in", new_user_session_path, method: :get %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div  style="text-align: center;">
+<a href="#" onClick="history.back(); return false;">前のページにもどる</a>
+</div>

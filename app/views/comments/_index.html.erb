@@ -1,0 +1,21 @@
+<% if comments.present? %>
+<i><%= novel_content.comments.count %>件</i>
+	<% comments.each  do |comment| %>
+	<% if comment.user == current_user %>
+	  <p class= "comment-user">
+	  	<%= link_to "#{comment.user.username}さん", user_path(comment.user.id) %>
+	  </p>
+	  <% else %>
+	  <p><%= link_to "#{comment.user.username}さん", user_path(comment.user.id) %></p>
+	  <% end %>
+	  <p>コメント：<%= comment.comment_contents %></p>
+	  <% if user_signed_in? %>
+		  <% if current_user.id == comment.user_id || current_user.admin? %>
+
+		  <P><%= link_to "コメントを削除する",  novel_novel_content_comment_path(comment.novel_content.novel_id, comment.novel_content_id, comment.id), method: :delete, remote: true, class: "btn btn-danger"  %>
+	  	  <% end  %>
+	  <% end %>
+	<%  end %>
+<% else %>
+<p>コメントはまだありません</p>
+<% end %>

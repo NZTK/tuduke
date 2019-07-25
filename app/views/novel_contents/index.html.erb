@@ -1,0 +1,66 @@
+<%= render "common/header" %>
+<div class=body>
+	<div  class="container">
+		<div class= "row">
+			<div  class= "col-lg-12  col-md-12 col-xs-12">
+				<%= render "common/alert" %>
+			    <div class= "table-responsive">
+				<table class= "table table-hover">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>タイトル</th>
+							<th>投稿者</th>
+							<th>作品名</th>
+							<th>編集</th>
+							<th>削除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @novel_contents.each do |f| %>
+						<tr>
+							<td><%= f.id %></td>
+							<% if f.novel == nil %>
+								<% unless f.deleted_at? %>
+									<td><%= f.novel_content_title %></td>
+									<td><%= link_to f.user.username, user_path(f.user.id) %></td>
+									<td>削除済み</td>
+									<td><i class= "btn btn-primary disabled">編集</i></td>
+									<td><i class= "btn btn-success disabled">復元</i></td>
+								<% else %>
+									<td><%= f.novel_content_title %></td>
+									<% if f.user.deleted_at? %>
+									<td><%= f.user.username %>退会済み</td>
+									<% else %>
+									<td><%= link_to f.user.username, user_path(f.user.id) %></td>
+									<% end %>
+									<td>削除済み</td>
+									<td><i class= "btn btn-primary disabled">編集</i></td>
+									<td><i class= "btn btn-success disabled">復元</i></td>
+							    <% end %>
+							<% else %>
+								<% unless f.deleted_at? %>
+									<td><%= link_to f.novel_content_title, novel_novel_content_path(f.novel, f) %></td>
+									<td><%= link_to f.user.username, user_path(f.user.id) %></td>
+									<td><%= link_to f.novel.novel_title, novel_path(f.novel) %></td>
+									<td><%= link_to "編集",  edit_novel_novel_content_path(f.novel, f.id), class: "btn btn-primary disable" %></td>
+									<td><%= button_to "削除", novel_novel_content_path(f.novel, f), method: :delete , class: "btn btn-danger", data:{ confirm: "削除しますか？"} %></td>
+								<% else  %>
+									<td><%= link_to f.novel.novel_title, novel_novel_content_path(f.novel, f) %></td>
+									<td><%= link_to f.user.username, user_path(f.user) %></td>
+									<td><%= link_to f.novel.novel_title, novel_path(f.novel) %></td>
+									<td><%= link_to "編集",  edit_novel_novel_content_path(f.novel, f.id), class: "btn btn-primary disable" %></td>
+									<td><%= link_to "復元",novel_content_restore_novel_novel_content_path(f.novel, f.id), method: :patch , class: "btn btn-success"%></td>
+								<% end %>
+							<% end %>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+				<%= paginate @novel_contents %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "common/footer"  %>

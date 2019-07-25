@@ -1,0 +1,52 @@
+<%= render "common/header" %>
+<div class= "body">
+	<div class= "container" >
+		<div class= "row">
+			<div class ="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+			<% if @novel.errors.any? %>
+			<div id="error_explanation">
+				<ul>
+					<h3><%= @novel.errors.count %>件のエラーです</h3>
+					<% @novel.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+
+			<%= form_with model: @novel, local: true do  |f| %>
+			<div class= "field novel-field" >
+				<%= f.label :novel_title, "作品名 ~50文字" %>
+				<%= f.text_field :novel_title, placeholder: "作品名を入力　~50文字" %>
+				<p id="counter-1">0文字</p>
+			</div>
+			<% if current_user.admin? %>
+				<div class= "field">
+					<%= f.label :novel_genre, "ジャンル" %><br>
+
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {prompt: @novel.genre.genre_name} %>
+					<%=link_to "ジャンルを追加" , new_genre_path ,class: "btn btn-success btn-xs"%>
+				</div>
+			<% else %>
+				<div class= "field">
+					<%= f.label :novel_genre, "ジャンル" %><br>
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {prompt: @novel.genre.genre_name} %>
+				</div>
+			<% end %>
+			<div class= "field novel-field">
+				<%= f.label :novel_tag, "タグ" %>
+				<%= text_field_tag "novel[tag_list]", @novel.tag_list.join(","), "date-role" => "tagsinput",  placeholder: "タグ1,タグ2,タグ3, ..."%>
+			</div>
+			<div class= "field">
+				<%= f.label :novel_about, "あらすじ/説明  10~10000文字" %>
+				<%= f.text_area :novel_about, placeholder: "あらすじ/説明  10~10000文字" %>
+				<p id="counter-2">0文字</p>
+			</div>
+			<h4><%= f.submit "更新" ,class: "btn btn-primary btn-block" ,date:{ confirm: "更新しますか？"}%></h4>
+			<% end %>
+			<%= link_to "削除", novel_path(@novel), method: :delete , class: "btn btn-block btn-danger", data:{ confirm: "削除しますか？"} %>
+			</div>
+		</div>
+	</div>
+</div>
+<%= render "common/footer" %>

@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      novel: 作品
+      genre: ジャンル
+      user: ユーザー
+      novel_content: 小説
+    attributes:
+      novel:
+        novel_title: 作品名
+        novel_about: あらすじ/説明
+      genre:
+        genre_name: ジャンル
+      user:
+        username: ユーザーネーム
+        user_about: 自己紹介
+      novel_content:
+        novel_content_title: 小説名
+        novel_content_text: 本文
+        novel_content_forewords: 前書き
+        novel_content_afterwords: 後書き
+

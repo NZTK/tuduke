@@ -1,0 +1,696 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  @import "font-awesome-sprockets";
+  @import "font-awesome";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#container {
+	    margin: 0 auto;
+    padding: 0px 5px;
+    text-align: left;
+    width: 960px;
+}
+
+.row {
+	width: 100%;
+	margin: 0;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+a{
+	color: black;
+}
+a:hover {
+	text-decoration: none;
+}
+.navbar  {
+	z-index: 1000000000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #000000;
+
+}
+
+.navbar-inverse .navbar-nav .fas{
+	display: contents;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+	color: blue;
+}
+
+li {
+	list-style: none;
+	cursor: pointer;
+	display: block;
+}
+
+.navbar-right > li {
+	padding: 5px;
+	margin-top: 20px;
+}
+.navbar-form  {
+	padding: 5px;
+	margin-top: 36px;
+}
+.novel-field > input[type = "text" ] {
+	width: 100%;
+	border-color: black;
+	border-width: 1px;
+}
+
+.content-field > textarea {
+	width: 100%;
+	height: 130px;
+	border-color: black;
+	border-width: 1px;
+}
+
+textarea {
+	width: 100%;
+	height: 1000px;
+	border-color: black
+}
+
+select {
+	border-color: black;
+}
+input {
+	border-color: black;
+	border: solid;
+	border-width: 1px;
+}
+
+
+.tag {
+	background-color: #007bff;
+	border-radius: 5px;
+	padding: 2px 6px 2px 6px;
+	margin: 5px;
+	border-color: #007bff;
+}
+.tag:hover {
+	background-color: red;
+	border-color: red;
+}
+.tag > a {
+	color: white;
+}
+
+
+.tag > i {
+	color: white;
+}
+
+.novel-about > p{
+	word-break: break-all;
+}
+
+.genre {
+	border: solid;
+	border-width: 1px;
+	border-radius: 4px;
+	padding: 3px  10px 3px  10px;
+	margin-bottom: 3px;
+	font-size: 15px;
+	background-color: white;
+}
+.navbar  {
+	border-radius: 0px
+}
+
+#dropdwn {
+	display: flex;
+	margin: 20px 0;
+	color: white;
+}
+
+.nav-con-link > a {
+	color: white;
+}
+.nav-con-link > a:hover {
+	color: deepskyblue;
+}
+
+#dropdwn .dropdwn_menu {
+	display: none;
+	position: absolute;
+	background-color: black;
+}
+#dropdwn  li {
+	margin: 0 3px 0 3px;
+}
+.dropdwn_menu  li {
+	width: 100%;
+}
+
+.dropdwn_menu  li  a {
+	padding: 5px;
+	display: block;
+	color: lavenderblush;
+}
+
+.dropdwn_menu  li  a:hover {
+	color: black;
+	background-color: white;
+	transform: scale(1.1);
+	border:solid;
+	border-width: 1px;
+}
+.dropdwn_menu .fas {
+	display: block !important;
+}
+.novel_show_container{
+	width: 75%;
+	text-align: center;
+	margin: auto;
+}
+.novel-field {
+	margin: 10px 0;
+}
+.btn_open {
+	background-color: #007bff;
+	color: white;
+	margin-bottom: 10px;
+}
+.btn_open:hover {
+	background-color: white;
+	border:solid 1px;
+	border-color: #007bff;
+	color: #007bff;
+}
+.index_container {
+	margin-bottom: 25px;
+
+}
+.novel-about {
+	margin-top: 15px;
+}
+#title {
+	width: 45%;
+	text-align: left;
+	padding: 0;
+}
+#title > a {
+	word-break: break-all;
+	display: block;
+	line-height: 2em;
+    padding-left: 8px;
+}
+
+.devise_container{
+
+	margin: 100px auto;
+	text-align: center;
+	border: solid 1px;
+	margin-bottom: 20px;
+}
+.devise_container .field > input[type= "text"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.devise_container .field > input[type= "email"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.devise_container .field > input[type= "password"] {
+	width: 70%;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	padding: 15px 25px;
+}
+
+.devise_container .actions > input[type= "submit"] {
+	width: 50%;
+	height: 40px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	background-color: royalblue;
+	color: white;
+}
+.password_container {
+	width: 70%;
+	margin: 100px auto;
+	text-align: center;
+	border: solid 1px;
+	margin-bottom: 20px;
+}
+.password_container .field > input[type= "email"] {
+	width: 70%;
+	border-radius: 5px;
+	padding: 15px 25px;
+}
+.password_container .actions > input[type= "submit"] {
+	width: 70%;
+	height: 40px;
+	border-radius: 5px;
+	margin: 15px 0;
+	background-color: royalblue;
+	color: white;
+}
+
+.devise_field {
+	margin: 20px auto;
+}
+
+
+.action_btn .button_to  > input[type= "submit"] {
+	width: 50%;
+    margin: auto;
+    background-color: limegreen;
+    padding: 8px 0;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.destroy {
+	margin-top: 23px;
+    width: 50%;
+    margin: 20px auto 0 auto;
+}
+
+.user_about_field > textarea {
+	height: 150px;
+}
+
+.show_head {
+    text-align: center;
+    border: double;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.novel-box-show {
+	border: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 20px;
+	padding: 8px 13px 13px 13px;
+	margin-bottom: 10px;
+	width: 90%;
+	margin: 10px auto;
+	background-color: white;
+}
+.novel-box-show {
+	word-break: break-all;
+}
+
+.show_novels_box {
+	border: double;
+    margin: 20px auto;
+    background-color: aliceblue;
+}
+
+.box_head {
+	text-align: center;
+}
+
+#novels_show  {
+	text-align: center;
+}
+
+#novel-title {
+	word-break: break-all;
+	text-align: center;
+}
+
+.join-user {
+	width: 50%;
+	margin: auto;
+}
+
+.user_about > table {
+	width: 100%;
+}
+
+.user_about > table > tbody > tr > th {
+	border: solid 1px;
+	text-align: center;
+	padding: 5px;
+}
+
+.user_about > table > tbody > tr {
+	border: solid 1px;
+}
+
+.user_about > table > tbody > tr > td {
+	padding: 10px;
+	width: 80%;
+}
+
+.novel_content_head {
+	text-align: right;
+    margin-right: 40px;
+}
+.novel-content-title {
+	text-align: center;
+}
+.novel-content-foreword {
+	text-align: left;
+	width: 90%;
+    margin: auto ;
+    border-bottom: solid 1px;
+    word-break: break-word;
+}
+
+.novel-content-text {
+	margin: auto;
+	width: 90%;
+	word-break: break-all;
+}
+
+.novel-content-afterword {
+	text-align: left;
+    margin: auto;
+    width: 90%;
+    border-top: solid 1px;
+    word-break: break-word;
+}
+.novel-content-botton {
+	text-align: center;
+	font-size: 20px;
+}
+.page {
+    margin: 0 3px;
+    border-radius: 2px;
+}
+.pagination {
+	text-align: center;
+	display: inherit;
+}
+.page > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 3px 8px 3px 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+.page > a:hover{
+	background: #007bff;
+    color: white;
+}
+.current {
+	background: #007bff;
+    color: white;
+    border-color: #007bff;
+    padding: 4px 9px 4px 8px;
+    border-radius: 4px;
+}
+
+.next {
+    margin: 0 3px;
+}
+.next > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+.next > a:hover {
+	background: #007bff;
+    color: white;
+}
+.last {
+    margin: 0 3px;
+}
+.last > a{
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0px 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.last > a:hover {
+	background: #007bff;
+    color: white;
+}
+.first {
+	margin: 0 3px;
+}
+
+.first > a {
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.first > a:hover {
+	background: #007bff;
+    color: white;
+}
+
+.prev {
+	margin: 0 3px;
+}
+
+.prev > a{
+	display: inline-block;
+    text-align: center;
+    border: solid 1px;
+    line-height: normal;
+    padding: 1px 8px 0 8px;
+    border-radius: 4px;
+    border-color: #007bff;
+}
+
+.prev > a:hover {
+	background: #007bff;
+    color: white;
+}
+
+.alert {
+	text-align: center;
+}
+
+.comment{
+	width: 90%;
+    margin: auto;
+    border: double;
+    padding: 6px;
+    background-color: aliceblue;
+    margin-bottom: 20px
+}
+
+.comment_textarea > textarea {
+	height: 100px;
+}
+.comment_actions  > input{
+	color: white;
+    background: limegreen;
+    line-height: 3;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.comment_actions  > input:hover{
+	background-color: orange;
+}
+
+.comment-index {
+	border: solid 1px;
+    padding: 10px;
+    margin-bottom: 9px;
+    background: white;
+}
+
+.comment-user > a{
+	color: cornflowerblue;
+}
+
+.box_head > a{
+	margin-bottom: 10px;
+}
+
+.ranking-box {
+	margin-bottom: 20px;
+    border: double;
+    background: aliceblue;
+    border-radius: 15px;
+}
+.ranking-box > h4 {
+	text-align: center;
+}
+
+.navlogo {
+	font-family: 'SINGLE FIGHTER';
+}
+
+.navbar-con {
+	padding-top: 20px;
+}
+.navbar-inverse .navbar-brand {
+ 	color: white;
+ }
+.navbar-brand:hover{
+	transform: scale(1.3);
+}
+
+.icon-bar {
+    -webkit-transition: ease .5s;
+    transition: ease .5s;
+}
+
+.navbar-toggle.active .icon-bar:nth-child(2) {
+    top: 10px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-top: 6px;
+}
+
+.navbar-toggle.active .icon-bar:nth-child(3) {
+    top: 0px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.navbar-toggle.active .icon-bar:nth-child(4) {
+    top: -10px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-top: -8px;
+    margin-bottom: 6px;
+}
+
+/*.navbar-collapse.collapse{
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+
+    position: absolute;
+    right: 5% !important;
+}*/
+
+/*.navbar-collapse.collapse.active {
+    -webkit-transform:translateX(0);
+    transform:translateX(0);
+    overflow-y: auto;
+    position: inherit;
+}*/
+
+.navbar-collapse.collapse.active #dropdwn{
+	display: inline;
+	text-align: center;
+}
+.navbar-collapse.collapse.active #dropdwn .dropdwn_menu{
+	position: inherit;
+}
+
+.open {
+	height: auto;
+}
+
+.logo {
+	font-family: 'SINGLE FIGHTER';
+}
+
+.table-follow {
+	background-color: white;
+	border: solid 1px;
+	width: 90%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.table-follow > thead > tr > th {
+	border: 1px solid black;
+	padding-left: 5px;
+}
+
+.table-follow > tbody {
+	border: 1px solid black;
+}
+
+.table-follow > tbody > tr {
+	border: 1px solid black;
+}
+
+.table-follow > tbody > tr > td {
+	border: 1px solid black;
+	padding-left: 5px;
+}
+#follow_btn {
+	margin-top: 5px;
+}
+
+.non_content {
+	text-align: center;
+}
+.actions {
+	margin-bottom: 5px;
+}
+
+.tag_cloud {
+	border: solid 1px;
+    border-radius: 18px;
+    padding: 10px;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.tag_cloud_head {
+	text-align: center;
+	font-family: '凸版文久見出しゴシック';
+}
+
+.about {
+	width: 80%;
+    margin: auto;
+    font-family: serif;
+    font-size: 17px;
+    line-height: 60px;
+}
+
+@media screen and (min-width: 768px){
+    .navbar-collapse.collapse{
+        -webkit-transform: translateX(0%);
+        width: 65%;
+    margin-left: 40%;
+    padding-left: 0;
+    }
+    .navbar-right{
+    	margin-right: 0;
+    }
+}
+

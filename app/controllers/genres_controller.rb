@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :destroy]
   before_action :user_admin
   def new
     @genre = Genre.new
@@ -10,7 +11,7 @@ class GenresController < ApplicationController
 
     if @genre.save
       flash[:notice] = 'ジャンルを新規登録しました.'
-      redirect_to new_novel_path
+      redirect_to new_genre_path
     else
       redirect_to new_genre_path
     end
@@ -33,8 +34,6 @@ class GenresController < ApplicationController
     @genres = Genre.page(params[:page])
     if current_user.admin == false
       redirect_to root_path
-    else
-      render :new
     end
   end
 end

@@ -1,9 +1,7 @@
 <%= render "common/header" %>
 <div class= "body">
 	<div  class="container">
-		<div class= "flash">
-			<%= flash[:notice] %>
-		</div>
+		<%= render "common/alert" %>
 		<% if @genre.errors.any? %>
 			<div id="error_explanation">
 				<ul>

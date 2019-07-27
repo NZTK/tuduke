@@ -1,6 +1,6 @@
 class CreateNovels < ActiveRecord::Migration[5.2]
   def change
-    create_table :novels do |t|
+    create_table :novel, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC's do |t|
       t.integer :user_id
       t.integer :novel_title
       t.text :novel_about

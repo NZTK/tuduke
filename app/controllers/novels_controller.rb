@@ -1,6 +1,6 @@
 class NovelsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :new, :destroy]
-  before_action :correct_user, only: [:edit, :destroy]
+  before_action :correct_user, only: [:edit]
   before_action :user_admin, only: [:novels_admin_index]
 
   def index

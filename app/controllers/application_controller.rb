@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def genres
-    @genres = Genre.all
+    @genres = Genre.all.order(genre_name: 'asc')
   end
 
   protected

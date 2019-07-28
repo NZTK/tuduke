@@ -7,7 +7,7 @@ AllCops:
    - 'tmp/**/*'
    - 'db/schema.rb'
  # ターゲットの Ruby バージョンをセットする
- TargetRubyVersion: 2.5
+ TargetRubyVersion: 2.4.5
  # デフォルトの全ての Cops を無効にする
  DisabledByDefault: true
 # Layout Cops のみ有効にする

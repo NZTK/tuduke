@@ -41,7 +41,9 @@
 		<% if @next.present? %>
 		<%= link_to "次へ", novel_novel_content_path(@novel, @next)  %>
 		<% else %>
+		<span  class= "logo">
 		<%= link_to "TUDUKU!!",new_novel_novel_content_path(@novel.id), class: "btn btn-xl btn-success" %>
+	    </span>
 		<% end %>
 		<div id= 'likes_buttons_<%= @novel_content.id %>'>
 			<%= render partial: 'likes/like', locals: {novel:  @novel, novel_content:  @novel_content} %>

@@ -679,7 +679,10 @@ input {
 
 .tag_cloud_head {
 	text-align: center;
-	font-family: 'monospace';
+}
+
+.tag_cloud_head {
+	font-weight: bold;
 }
 
 .about {

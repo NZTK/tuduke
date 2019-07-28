@@ -33,6 +33,14 @@
     width: 960px;
 }
 
+#container-fluid {
+	margin-bottom: 15px;
+}
+
+.footer {
+	margin-top: 10px;
+}
+
 .row {
 	width: 100%;
 	margin: 0;
@@ -554,7 +562,7 @@ input {
 }
 
 .navlogo {
-	font-family: 'SINGLE FIGHTER';
+	font-family: 'Kaushan Script', cursive;
 }
 
 .navbar-con {
@@ -622,7 +630,7 @@ input {
 }
 
 .logo {
-	font-family: 'SINGLE FIGHTER';
+	font-family: 'Kaushan Script', cursive;
 }
 
 .table-follow {
@@ -671,7 +679,7 @@ input {
 
 .tag_cloud_head {
 	text-align: center;
-	font-family: '凸版文久見出しゴシック';
+	font-family: 'monospace';
 }
 
 .about {
@@ -693,4 +701,14 @@ input {
     	margin-right: 0;
     }
 }
+@media screen and (max-width: 767px){
+	.novel_show_container{
+	    	width: 95%;
+	    	margin: auto;
+	    }
 
+	    .table-responsive {
+	        border-right: 0;
+	        border-left: 0;
+	    }
+}

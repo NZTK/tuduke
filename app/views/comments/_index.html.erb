@@ -1,3 +1,4 @@
+<div class= "comment-index">
 <% if comments.present? %>
 <i><%= novel_content.comments.count %>件</i>
 	<% comments.each  do |comment| %>
@@ -12,10 +13,11 @@
 	  <% if user_signed_in? %>
 		  <% if current_user.id == comment.user_id || current_user.admin? %>
 
-		  <P><%= link_to "コメントを削除する",  novel_novel_content_comment_path(comment.novel_content.novel_id, comment.novel_content_id, comment.id), method: :delete, remote: true, class: "btn btn-danger"  %>
+		  <P><%= link_to "コメントを削除する",  novel_novel_content_comment_path(comment.novel_content.novel_id, comment.novel_content_id, comment.id), method: :delete, remote: true, class: "btn btn-danger"  %></p>
 	  	  <% end  %>
 	  <% end %>
 	<%  end %>
 <% else %>
 <p>コメントはまだありません</p>
 <% end %>
+</div>

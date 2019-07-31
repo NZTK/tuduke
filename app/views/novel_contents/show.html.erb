@@ -53,9 +53,9 @@
 	<div class= "comment">
 		<h4>コメント</h4>
 		<div id= "comments_area" >
-			<div class= "comment-index">
+			
 			<%= render partial: "comments/index",  locals: {comments: @comments, novel_content: @novel_content} %>
-			</div>
+			
 		</div>
 		<% if user_signed_in? %>
 		<%= render partial: "comments/form", locals: {comment: @comment, novel_content: @novel_content, novel: @novel} %>
